@@ -10,7 +10,7 @@ const user = require("../../models/userModel").userModel;
 // }
 
 function fetchUser(req, res){
-    user.find({name:req.params.name},(err,user)=>{
+    user.find({email:req.params.email},(err,user)=>{
         if(err){
             console.log(err);
         }else{

@@ -41,5 +41,5 @@ const tripSchema = mongoose.Schema({
 })
 
 
- let userModel=mongoose.model('trip',tripSchema);
+ let tripModel=mongoose.model('tripDetails',tripSchema,'tripDetails');
 module.exports={tripModel};

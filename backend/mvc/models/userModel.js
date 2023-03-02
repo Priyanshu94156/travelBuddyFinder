@@ -20,15 +20,18 @@ const userSchema= mongoose.Schema({
         // required:true
     },
     age:{
-        type:String,
+        type:Number,
         // required:true
     },
     gender:{
         type:String,
         // required:true
-    }
+    },
+    Trips:[{
+        type:Object
+    }],
 })
- let userModel=mongoose.model('users',userSchema);
+ let userModel=mongoose.model('users',userSchema,'users');
 module.exports={userModel};
 
 

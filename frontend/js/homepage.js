@@ -46,6 +46,8 @@ $("#googlebtn").click(()=>{
     // window.location.href="http://localhost:3002/auth/google";
 })
 
+import getUrl from "./url";
+const urlHead = getUrl();
 
 
 //sign in button
@@ -59,7 +61,7 @@ signinbtn.addEventListener('click', function() {
 	var mail=document.querySelector("#LogEmail");
 	var pwd= document.getElementById("LogPassword");
 	console.log(mail.value+" "+pwd.value);;
-	var url="http://localhost:3003/user/validate";
+	var url=urlHead+"/user/validate";
 	var email=mail.value;
 	var password=pwd.value;
 	data={email:email,password:password}

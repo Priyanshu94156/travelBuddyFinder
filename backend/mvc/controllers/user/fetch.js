@@ -19,4 +19,4 @@ function fetchUser(req, res){
     })
 }
 
-module.exports = {fetchUser};
+module.exports = {fetchUser};   

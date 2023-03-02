@@ -1,0 +1,19 @@
+.trip_date
+{
+	font-size:10px;
+}
+.trip_type
+{
+	font-size:12px;
+}
+
+.scrollArea #search_tab .nav-item {
+    width: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+}
+.secScrollArea {
+    height: 60vh;
+}

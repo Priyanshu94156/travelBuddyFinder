@@ -1,0 +1,116 @@
+body
+{
+	overflow: hidden;
+}
+.customLabel
+{
+	font-size: 10px;
+	padding-bottom: 0;
+}
+form .ui-slider-horizontal
+{
+	height: 5px;
+	background: #ccc;
+}
+form .ui-slider-handle 
+{
+	background: #ffffff !important;
+	top: -0.25em !important;
+	width: 12px !important;
+	height: 12px !important;
+	border-radius: 50%;
+	box-shadow: none !important;
+	outline: none !important;
+	border: 1px solid #c5c5c5 !important;
+	cursor: pointer !important;
+}
+form .ui-slider-range
+{
+	background: var(--c1)
+}
+form .card
+{
+	border:none;
+}
+form .card-header
+{
+	padding: 0;
+	border-bottom: 1.5px solid #c1c2c3 !important;
+}
+form .card-header .btn
+{
+	color: #333;
+	font-size: 14px;
+	width: 100%;
+	text-align: left;
+}
+form .card-header button:after {
+	content: '-';
+	position: absolute;
+	right: 12px;
+	color: black
+}
+form .card-header button.collapsed:after {
+	content: '+';
+}
+.secScrollArea
+{
+	height: 43vh
+}
+.scrollArea #search_tab .nav-item
+{
+	width: 50%;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight:500;
+}
+.search_box p
+{
+	font-size: 11px;
+	color: #ccc;
+	margin-bottom: -6px !important;
+}
+.search_box input
+{
+	padding-right: 30px;
+}
+.search_box div:after
+{
+	content: '';
+	background: url(../static/images/search_black.svg);
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	right: 5px;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+}
+.card_body
+{
+	padding: 0.5em
+}
+.search_results .cardImg
+{
+	height: 7em;
+	background: url(../static/images/dummy.jpg) center no-repeat;
+	background-size: cover;
+}
+.search_results .cardImg svg
+{
+	cursor: pointer;
+}
+.search_results .cardImg.fav svg
+{
+	fill: var(--c1)
+}
+@media only screen and (max-width: 768px)
+{
+	body
+	{
+		overflow: auto;
+	}
+}

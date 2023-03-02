@@ -1,0 +1,6 @@
+.invite_bg
+{
+    background: url("../static/images/invite.png");
+    background-size: cover;
+    width: 100%;
+}

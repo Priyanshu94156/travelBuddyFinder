@@ -1,0 +1,67 @@
+.upgrade
+{
+    background: url("../static/images/upgrade.png");
+    background-size: cover;
+    height: 56vh;
+}
+.card-green
+{
+    background-color: #7daf1b;
+}
+.card-body ul
+{
+    list-style: none;
+    padding-inline-start: 0px;
+}
+.h-35
+{
+    height: 35%;
+}
+.h-65
+{
+    height: 65%;
+}
+.h-20
+{
+    height: 20%;
+}
+.h-80
+{
+    height: 80%;
+}
+.px-6
+{
+    padding-right: 5rem;
+    padding-left: 5rem;
+}
+.upgrade_card img
+{
+    width: 100px;
+}
+.upgrade_card img:nth-child(2)
+{
+    width: 50px;
+}
+.upgrade_bottom
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.z-ind2
+{
+    z-index: 2;
+    left: 0;
+    right: 0;
+}
+@media only screen and (max-width: 768px) {
+    .upgrade
+    {
+        height: auto;
+    }
+    .upgrade_box {
+        height: 100%;
+        margin-bottom: 1em;
+    }
+}

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timoo | Search</title>
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<!-- <link rel="icon" type="image/png" href="imgs/favicon.png"> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,700">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/custom.css">
+	<link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="#"><img class="logo" src="../static/images/logo.png"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+				<form class="form-inline my-2 my-lg-0 ml-auto">
+					<a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/search.png"></a>
+					<a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/settings.png"></a>
+					<button class="btn timoo-outline-btn ml-2 my-2 my-sm-0" type="submit">Create Trip</button>
+				</form>
+			</div>
+		</nav>
+	</div>
+	<!-- main content -->
+	<div class="container-fluid">
+		<div class="row">
+			<!-- sidebar -->
+			<div class="col-sm-2 d-none d-sm-block sidebar">
+				<div class="position-fixed">
+					<div class="vr_line"></div>
+					<ul class="list-group">
+						<li class="list-group-item"><a href="profile.html">My Profile</a></li>
+					<li class="list-group-item"><a href="trip.html">Trips</a></li>
+					<li class="list-group-item"><a href="#">Favorites</a></li>
+					<li class="list-group-item"><a href="message.html">Messages</a></li>
+					</ul>
+					<div class="vr_line"></div>
+				</div>
+			</div>
+			<!-- main -->
+			<div class="col-lg-8 col-sm-9 col-12 main_body mt-4 bg1 p-2">
+				<div class="row">
+					<div class="col-sm-4">
+						<header>
+							<h5 class="searchToggle tripEn d-none">Trips Filter</h5>
+							<h5 class="searchToggle memberEn">Members Filter</h5>
+						</header>
+						<div class="scrollArea p-3">
+							<form class="searchToggle tripEn tripFilterForm d-none" onsubmit="return false">
+								<input type="text" name="startloc" class="form-control customInp" placeholder="Starting Location">
+								<input type="text" name="endloc" class="form-control customInp" placeholder="Ending Location">
+								<h6>Trips Type</h6>
+								<div class="mb-1 tripRadio">
+									<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','.tripRadio')">Group</button>
+									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripRadio')">Date</button>
+								</div>
+								<div class="form-group row">
+									<div class="col-6">
+										<label for="fromDate" class="col-form-label customLabel">From Date</label>
+										<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="fromDate">
+									</div>
+									<div class="col-6">
+										<label for="toDate" class="col-form-label customLabel">To Date</label>
+										<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="toDate">
+									</div>
+								</div>
+								<div class="mb-1 genderRadio">
+									<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')">Female</button>
+									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')">Male</button>
+									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')">Any</button>
+								</div>
+								<input type="text" name="nop" class="form-control customInp" placeholder="Number of persons">
+
+								<input type="text" name="keyword" class="form-control customInp" placeholder="Keyword">
+								<div class="pt-2">
+									<button type="submit" class="btn theme2-btn">APPLY</button>
+									<button type="reset" class="btn theme2-outline-btn">RESET ALL</button>
+								</div>
+							</form>
+							<form class="searchToggle memberFilterForm memberEn" onsubmit="return false">
+								<h6 class="mb-0 f4 font-weight-normal">Age</h6>
+								<div class="ageVal customLabel text-center pb-1	"></div>
+								<div id="age-slider-range"></div>
+
+								<div class="mt-3 mb-1 genderRadio">
+									<button class="theme1btn selected btn" onclick="toggleSel($(this),'.theme1btn','.memberFilterForm .genderRadio')">Female</button>
+									<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','.memberFilterForm .genderRadio')">Male</button>
+									<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','.memberFilterForm .genderRadio')">Any</button>
+								</div>
+								<div class="card pt-2">
+									<div class="card-header bg1 " id="headingOne">
+										<h5 class="mb-0">
+											<button class="btn btn-link  no-underline pl-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+												Relationship Status
+											</button>
+										</h5>
+									</div>
+									<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent=".memberFilterForm">
+										<div class="card-body pl-0 pb-0">
+											<label class="customChck">Single
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">Married
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">Any
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="card pt-3">
+									<div class="card-header bg1 " id="headingTwo">
+										<h5 class="mb-0">
+											<button class="btn btn-link  no-underline pl-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+												Body Type
+											</button>
+										</h5>
+									</div>
+									<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent=".memberFilterForm">
+										<div class="card-body pl-0 pb-0">
+											<label class="customChck">Slim
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">Normal
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<h6 class="mt-3 mb-0 f4 font-weight-normal">Height</h6>
+								<div class="heightVal customLabel text-center pb-1	"></div>
+								<div id="height-slider-range" class="mb-3"></div>
+
+								<div class="card pt-0">
+									<div class="card-header bg1 " id="headingThree">
+										<h5 class="mb-0">
+											<button class="btn btn-link  no-underline pl-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+												Ethinicity
+											</button>
+										</h5>
+									</div>
+									<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent=".memberFilterForm">
+										<div class="card-body pl-0 pb-0">
+											<label class="customChck">Indian
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">American
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">African
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="card pt-3">
+									<div class="card-header bg1 " id="headingFour">
+										<h5 class="mb-0">
+											<button class="btn btn-link  no-underline pl-0 collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+												Smoking
+											</button>
+										</h5>
+									</div>
+									<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent=".memberFilterForm">
+										<div class="card-body pl-0 pb-0">
+											<label class="customChck">non-smoker
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">light smoker
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">heaver smoker
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<!-- drinking -->
+								<div class="card pt-3">
+									<div class="card-header bg1 " id="headingFive">
+										<h5 class="mb-0">
+											<button class="btn btn-link  no-underline pl-0 collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+												Drinking
+											</button>
+										</h5>
+									</div>
+									<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent=".memberFilterForm">
+										<div class="card-body pl-0 pb-0">
+											<label class="customChck">non-drinker
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">light drinker
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+											<label class="customChck">heaver drinker
+												<input type="checkbox">
+												<span class="checkmark"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="pt-4">
+									<button type="submit" class="btn theme1btn selected">APPLY</button>
+									<button type="reset" class="btn theme1btn">RESET ALL</button>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<!-- message box -->
+					<div class="col-sm-8 rightContentArea unscrollMain">
+						<header class="d-flex align-items-center">
+							<h6 class="m-0">< Back</h6>
+							<h5 class="mx-auto">Search</h5>
+
+						</header>
+						<div class="scrollArea">
+							<ul class="nav nav-tabs" id="search_tab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active c1" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" data-en='.memberEn'>Members</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link c2" id="trips-tab" data-toggle="tab" href="#trips" role="tab" aria-controls="trips" aria-selected="false" data-en='.tripEn'>Trips</a>
+								</li>
+
+							</ul>
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active px-3" id="members" role="tabpanel" aria-labelledby="members-tab">
+									<div class="search_box px-4 mx-4 pt-3 pb-3">
+										<p class="m-0">I am looking for members at</p>
+										<div class="position-relative">
+											<input type="text" name="search" class="customInp form-control">
+										</div>
+									</div>
+									<p class="f5 px-3">About 5 results</p>
+									<div class="search_results row px-4 secScrollArea">
+										<!-- clone -->
+										<div class="card_body col-sm-3 col-6">
+											<div class="card p-1">
+												<div class="cardImg fav text-right">
+													<svg width="20px" height="20px" enable-background="new 0 0 49.94 49.94" version="1.1" viewBox="0 0 49.94 49.94" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"  fill="#bdbbbd" >
+														<path d="m48.856 22.73c0.983-0.958 1.33-2.364 0.906-3.671-0.425-1.307-1.532-2.24-2.892-2.438l-12.092-1.757c-0.515-0.075-0.96-0.398-1.19-0.865l-5.406-10.956c-0.607-1.231-1.839-1.996-3.212-1.996-1.372 0-2.604 0.765-3.211 1.996l-5.407 10.957c-0.23 0.467-0.676 0.79-1.191 0.865l-12.092 1.757c-1.359 0.197-2.467 1.131-2.892 2.438-0.424 1.307-0.077 2.713 0.906 3.671l8.749 8.528c0.373 0.364 0.544 0.888 0.456 1.4l-2.064 12.042c-0.183 1.06 0.095 2.091 0.781 2.904 1.066 1.267 2.927 1.653 4.415 0.871l10.814-5.686c0.452-0.237 1.021-0.235 1.472 0l10.815 5.686c0.526 0.277 1.087 0.417 1.666 0.417 1.057 0 2.059-0.47 2.748-1.288 0.687-0.813 0.964-1.846 0.781-2.904l-2.065-12.042c-0.088-0.513 0.083-1.036 0.456-1.4l8.749-8.529z"/>
+													</svg>&nbsp;
+												</div>
+												<p class="searchUser f4 text-uppercase fw500 m-0">Kate Hudson</p>
+												<p class="searchLoc f3 m-0 c5">Los Angles, Calfornia, USA </p>
+											</div>
+										</div>
+										<div class="card_body col-sm-3 col-6">
+											<div class="card p-1">
+												<div class="cardImg text-right">
+													<svg width="20px" height="20px" enable-background="new 0 0 49.94 49.94" version="1.1" viewBox="0 0 49.94 49.94" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"  fill="#bdbbbd">
+														<path d="m48.856 22.73c0.983-0.958 1.33-2.364 0.906-3.671-0.425-1.307-1.532-2.24-2.892-2.438l-12.092-1.757c-0.515-0.075-0.96-0.398-1.19-0.865l-5.406-10.956c-0.607-1.231-1.839-1.996-3.212-1.996-1.372 0-2.604 0.765-3.211 1.996l-5.407 10.957c-0.23 0.467-0.676 0.79-1.191 0.865l-12.092 1.757c-1.359 0.197-2.467 1.131-2.892 2.438-0.424 1.307-0.077 2.713 0.906 3.671l8.749 8.528c0.373 0.364 0.544 0.888 0.456 1.4l-2.064 12.042c-0.183 1.06 0.095 2.091 0.781 2.904 1.066 1.267 2.927 1.653 4.415 0.871l10.814-5.686c0.452-0.237 1.021-0.235 1.472 0l10.815 5.686c0.526 0.277 1.087 0.417 1.666 0.417 1.057 0 2.059-0.47 2.748-1.288 0.687-0.813 0.964-1.846 0.781-2.904l-2.065-12.042c-0.088-0.513 0.083-1.036 0.456-1.4l8.749-8.529z"/>
+													</svg>&nbsp;
+												</div>
+												<p class="searchUser f4 text-uppercase fw500 m-0">Kate Hudson</p>
+												<p class="searchLoc f3 m-0 c5">Los Angles, Calfornia, USA </p>
+											</div>
+										</div>
+										<div class="card_body col-sm-3 col-6">
+											<div class="card p-1">
+												<div class="cardImg text-right">
+													<svg width="20px" height="20px" enable-background="new 0 0 49.94 49.94" version="1.1" viewBox="0 0 49.94 49.94" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"  fill="#bdbbbd">
+														<path d="m48.856 22.73c0.983-0.958 1.33-2.364 0.906-3.671-0.425-1.307-1.532-2.24-2.892-2.438l-12.092-1.757c-0.515-0.075-0.96-0.398-1.19-0.865l-5.406-10.956c-0.607-1.231-1.839-1.996-3.212-1.996-1.372 0-2.604 0.765-3.211 1.996l-5.407 10.957c-0.23 0.467-0.676 0.79-1.191 0.865l-12.092 1.757c-1.359 0.197-2.467 1.131-2.892 2.438-0.424 1.307-0.077 2.713 0.906 3.671l8.749 8.528c0.373 0.364 0.544 0.888 0.456 1.4l-2.064 12.042c-0.183 1.06 0.095 2.091 0.781 2.904 1.066 1.267 2.927 1.653 4.415 0.871l10.814-5.686c0.452-0.237 1.021-0.235 1.472 0l10.815 5.686c0.526 0.277 1.087 0.417 1.666 0.417 1.057 0 2.059-0.47 2.748-1.288 0.687-0.813 0.964-1.846 0.781-2.904l-2.065-12.042c-0.088-0.513 0.083-1.036 0.456-1.4l8.749-8.529z"/>
+													</svg>&nbsp;
+												</div>
+												<p class="searchUser f4 text-uppercase fw500 m-0">Kate Hudson</p>
+												<p class="searchLoc f3 m-0 c5">Los Angles, Calfornia, USA </p>
+											</div>
+										</div>
+										<div class="card_body col-sm-3 col-6">
+											<div class="card p-1">
+												<div class="cardImg text-right">
+													<svg width="20px" height="20px" enable-background="new 0 0 49.94 49.94" version="1.1" viewBox="0 0 49.94 49.94" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"  fill="#bdbbbd">
+														<path d="m48.856 22.73c0.983-0.958 1.33-2.364 0.906-3.671-0.425-1.307-1.532-2.24-2.892-2.438l-12.092-1.757c-0.515-0.075-0.96-0.398-1.19-0.865l-5.406-10.956c-0.607-1.231-1.839-1.996-3.212-1.996-1.372 0-2.604 0.765-3.211 1.996l-5.407 10.957c-0.23 0.467-0.676 0.79-1.191 0.865l-12.092 1.757c-1.359 0.197-2.467 1.131-2.892 2.438-0.424 1.307-0.077 2.713 0.906 3.671l8.749 8.528c0.373 0.364 0.544 0.888 0.456 1.4l-2.064 12.042c-0.183 1.06 0.095 2.091 0.781 2.904 1.066 1.267 2.927 1.653 4.415 0.871l10.814-5.686c0.452-0.237 1.021-0.235 1.472 0l10.815 5.686c0.526 0.277 1.087 0.417 1.666 0.417 1.057 0 2.059-0.47 2.748-1.288 0.687-0.813 0.964-1.846 0.781-2.904l-2.065-12.042c-0.088-0.513 0.083-1.036 0.456-1.4l8.749-8.529z"/>
+													</svg>&nbsp;
+												</div>
+												<p class="searchUser f4 text-uppercase fw500 m-0">Kate Hudson</p>
+												<p class="searchLoc f3 m-0 c5">Los Angles, Calfornia, USA </p>
+											</div>
+										</div>
+										<div class="card_body col-sm-3 col-6">
+											<div class="card p-1">
+												<div class="cardImg text-right">
+													<svg width="20px" height="20px" enable-background="new 0 0 49.94 49.94" version="1.1" viewBox="0 0 49.94 49.94" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"  fill="#bdbbbd">
+														<path d="m48.856 22.73c0.983-0.958 1.33-2.364 0.906-3.671-0.425-1.307-1.532-2.24-2.892-2.438l-12.092-1.757c-0.515-0.075-0.96-0.398-1.19-0.865l-5.406-10.956c-0.607-1.231-1.839-1.996-3.212-1.996-1.372 0-2.604 0.765-3.211 1.996l-5.407 10.957c-0.23 0.467-0.676 0.79-1.191 0.865l-12.092 1.757c-1.359 0.197-2.467 1.131-2.892 2.438-0.424 1.307-0.077 2.713 0.906 3.671l8.749 8.528c0.373 0.364 0.544 0.888 0.456 1.4l-2.064 12.042c-0.183 1.06 0.095 2.091 0.781 2.904 1.066 1.267 2.927 1.653 4.415 0.871l10.814-5.686c0.452-0.237 1.021-0.235 1.472 0l10.815 5.686c0.526 0.277 1.087 0.417 1.666 0.417 1.057 0 2.059-0.47 2.748-1.288 0.687-0.813 0.964-1.846 0.781-2.904l-2.065-12.042c-0.088-0.513 0.083-1.036 0.456-1.4l8.749-8.529z"/>
+													</svg>&nbsp;
+												</div>
+												<p class="searchUser f4 text-uppercase fw500 m-0">Kate Hudson</p>
+												<p class="searchLoc f3 m-0 c5">Los Angles, Calfornia, USA </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- trips -->
+								<div class="tab-pane fade px-3" id="trips" role="tabpanel" aria-labelledby="trips-tab">
+									<div class="search_box px-4 mx-4 pt-3 pb-3">
+										<p class="m-0">I am looking for Trips at</p>
+										<div class="position-relative">
+											<input type="text" name="search" class="customInp form-control">
+										</div>
+									</div>
+									<p class="f5 px-3">About 5 results</p>
+									<div class="search_results row px-4 secScrollArea">
+										<div class="trip_card date row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">London</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Date Trip</span> 
+													<span>We'll split 50-50</span>
+												</div>
+											</div>
+										</div>
+										<div class="trip_card friends row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">London</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Seatle</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Boston</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Friends Trip</span> 
+													<span>Female</span>
+												</div>
+											</div>
+										</div>
+										<div class="trip_card friends row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">New York</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Seatle</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Boston</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Friends Trip</span> 
+													<span>Female</span>
+												</div>
+											</div>
+										</div>
+										<div class="trip_card date row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">London</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Date Trip</span> 
+													<span>We'll split 50-50</span>
+												</div>
+											</div>
+										</div>
+										<div class="trip_card friends row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">London</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Seatle</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Boston</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Friends Trip</span> 
+													<span>Female</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<footer class="py-4 mt-4">
+			<div class="normal_int ">
+				<div class="row f2 fw500 c4">
+					<div class="col-sm-1 col-4">About Us</div>
+					<div class="col-sm-1 col-4">Guidelines</div>
+					<div class="col-sm-1 col-4">Blog</div>
+					<div class="col-sm-1 col-4">Terms</div>
+					<div class="col-sm-1 col-4">Privacy</div>
+					<div class="col-sm-1 col-4">GDPR</div>
+					<div class="col-sm-4 c4 lfw">© 2018 Timoo All Rights Reserved</div>
+					<div class="col-sm-2 follow_icon c2 ">FOLLOW US!
+						<img src="../static/images/facebook.svg">
+						<img src="../static/images/twitter.svg">
+						<img src="../static/images/youtube.svg">
+						<img src="../static/images/instagram.svg">
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$( function() {
+		// age
+		$( "#age-slider-range" ).slider({
+			range: true,
+			min: 18,
+			max: 75,
+			values: [ 24, 50 ],
+			slide: function( event, ui ) {
+				$( ".ageVal" ).html(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+			}
+		});
+		$( ".ageVal" ).html($( "#age-slider-range" ).slider( "values", 0 ) +
+			" - " + $( "#age-slider-range" ).slider( "values", 1 ) );
+
+		// for height
+		$( "#height-slider-range" ).slider({
+			range: true,
+			min: 150,
+			max: 220,
+			values: [ 180, 200 ],
+			slide: function( event, ui ) {
+				$( ".heightVal" ).html( ui.values[ 0 ] + "cm - " + ui.values[ 1 ]+"cm" );
+			}
+		});
+		$( ".heightVal" ).html( $( "#height-slider-range" ).slider( "values", 0 ) +
+			"cm -" + $( "#height-slider-range" ).slider( "values", 1 ) +"cm");
+
+		$('#search_tab .nav-link').click(function()
+		{
+			$('.searchToggle').addClass('d-none');
+			$($(this).attr('data-en')).removeClass('d-none')
+		})
+
+	} );
+	function toggleSel(curr,el,parent)
+	{
+		$(parent).find(el).removeClass('selected');
+		curr.addClass('selected')
+	}
+</script>
+</html>

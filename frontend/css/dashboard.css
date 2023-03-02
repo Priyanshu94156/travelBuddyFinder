@@ -1,0 +1,25 @@
+
+.scrollArea #search_tab .nav-item {
+    width: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+}
+.search_results .cardImg {
+    height: 11em;
+    background: url(../static/images/dummy.jpg) center no-repeat;
+    background-size: cover;
+}
+.card_body
+{
+	margin-bottom: 1em;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+.search_results .cardImg.fav svg {
+    fill: var(--c1);
+}
+.secScrollArea {
+    height: 57vh;
+}

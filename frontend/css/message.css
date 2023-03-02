@@ -1,0 +1,252 @@
+body
+{
+    overflow: hidden;
+}
+
+.convoList header h5
+{
+    padding-bottom: 0;
+    padding-right: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 9px 0;
+}
+.chatInfo header
+{
+    height: 74px;
+}
+.convoSearch
+{
+	position: absolute;
+    top: 1em;
+    right: 10px;
+}
+.mesListCard {
+    padding: 10px;
+    padding-right: 40px;
+    position: relative;
+}
+.mesListCard .mesListIcon
+{
+    width: 20px;
+    height: 100%;
+    background-size: 100% !important;
+    display: inline-block;
+    position: absolute;
+    right: 8px;
+    top: 0px;
+    background-position: center !important;  
+}
+.mesListCard.read .mesListIcon 
+{
+    background: url(../static/images/icons/read-email-outline.svg) no-repeat;
+}
+.mesListCard.unread .mesListIcon 
+{
+    background: url(../static/images/icons/unread-email-outline.svg) no-repeat;
+}
+.mesListCard.selected .mesListIcon 
+{
+    background: url(../static/images/icons/right-arrow-shirt.svg) no-repeat;
+}
+.mesListCard.selected {
+    background: #e0e0e0;
+}
+
+
+.trip_location
+{
+    font-weight: 500;
+}
+.trip_users
+{
+    font-size: 12px;
+    color:#a7a7a7;
+}
+.trip_users .tu:not(:last-child):after
+{
+    content: ',';
+    position: relative;
+    display: inline-block;
+}
+
+.chatInfo
+{
+    padding-left: 0;
+}
+.leftCard
+{
+        max-width: 60%;
+    display: table;
+    padding: 0.6em;
+}
+.userImg
+{
+    display: table-cell;
+}
+.userImg, .userImg img
+{
+    width: 30px;
+    height:30px;
+    border-radius: 50%;
+}
+.rightContentArea .scrollArea
+{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-size: 12px;
+}
+.msgBox
+{
+font-size: 12px;
+    font-weight: 400;
+    padding: 6px 10px;
+    margin-left: 6px;
+    border-radius: 3px;
+    max-width: max-content;
+}
+.leftCard .msgBox
+{
+    background: rgba(125, 175, 27, 0.2);
+}
+.rightCard .msgBox
+{
+    background: rgba(76, 195, 251, 0.2);
+}
+.msgBox .userName
+{
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.olIndicator
+{
+        width: 8px;
+    height: 8px;
+    background: #a4a4a4;
+    display: inline-block;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.olIndicator.online
+{
+    background: var(--c2)
+}
+.rightCard
+{
+    max-width: 60%;
+    margin-left: auto;
+    padding: 0.6em;
+}
+.secScrollArea
+{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    max-height: 57vh;
+    overflow: auto;
+    overflow: overlay;
+}
+.secScrollArea:after
+{
+       background: url(../static/images/pencil.png) 0 0 no-repeat;
+    content: 'Alex is typing';
+    position: relative;
+    display: block;
+    padding-left: 1.2em;
+    margin-left: 1em;
+    color: #b8b8b8;
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+/*message box*/
+.msgReplyBox {
+    background-color: rgb( 255, 255, 255 );
+    box-shadow: 0.5px 0.866px 7px 0px rgb( 0, 0, 0 );
+    display: flex;
+    align-items: center;
+    padding:0.5em;
+}
+.sendBtn
+{
+margin: auto;
+    border-radius: 2px;
+    background-color: rgb( 76, 195, 251 );
+    color: white;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.msgReply
+{
+    width: 85%;
+    border-radius: 2px;
+    resize: none;
+    outline-color: var(--c3);
+    font-size: 14px;
+}
+.unreadBtn
+{
+    width: 8px;
+    height: 8px;
+    background: var(--c1);
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.unreadCard
+{
+        text-align: center;
+    line-height: 1.2;
+}
+
+/*user card*/
+.userCard
+{
+    /*flex-direction: column;*/
+}
+.userCard img
+{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+.userData
+{
+    width:40%;
+   
+}
+.userData >*
+{
+     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.delArea
+{
+    margin: auto;
+}
+.chatUserName
+{
+    text-transform: uppercase;
+}
+@media only screen and (max-width: 768px)
+{
+    body
+    {
+        overflow: auto;
+    }
+    .rightContentArea,.chatInfo
+    {
+        padding-left: 15px;
+    }
+    .scrollArea
+    {
+        margin-bottom: 1em;
+    }
+}

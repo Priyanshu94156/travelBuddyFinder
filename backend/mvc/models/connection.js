@@ -1,5 +1,5 @@
 const mongoose =  require('mongoose');
-const url= "mongodb://localhost:27017/timoo";
+const url= "mongodb+srv://travelBuddyFinder:12345abcde@travelbuddy.ncdo6tr.mongodb.net/travelBuddy";
 
 mongoose.connect(url);
 mongoose.Promise = global.Promise;

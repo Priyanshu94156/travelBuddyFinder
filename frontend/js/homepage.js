@@ -74,9 +74,8 @@ signinbtn.addEventListener('click', function() {
 			console.log(data);
 			// data=JSON.parse(data);
 			if(data.status =="valid"){
-				var username=email.split('@')[0]
-				console.log(username)
-				localStorage.setItem("userName",data.username);
+				console.log(data.name)
+				localStorage.setItem("userName",data.name);
 				window.location.replace("profile.html");
 
 				alert("successful login")

@@ -1,8 +1,9 @@
+const express = require('express');
 const tripCtrl = require("../../models/trips")
 
 
-
-async function addTrips(req, res){
+function addTrips(req, res){
+    console.log("body",req.body)
     //if (type(req.body.owner)==String){}
     let addTripData = tripCtrl.tripModel({
         owner:req.body.owner,
@@ -19,9 +20,10 @@ async function addTrips(req, res){
         photos:req.body.photos
     })
 
-    console.log(addTripData)   
-    await addTripData.save((err,result)=>{
+    console.log("showing addTrip",addTripData)   
+    addTripData.save((err,result)=>{
         if(err){
+            console.log("error",err)
             res.send(err)
         }else{
             console.log("added")

@@ -75,7 +75,7 @@ signinbtn.addEventListener('click', function() {
         success:function(data){
 			console.log("sucessful");
 			data = JSON.parse(data) 
-			// console.log("data",data.email);
+			// console.log("data",data.email); this one added
 			
 			if(data.status =="valid"){
 				// console.log("data",data);

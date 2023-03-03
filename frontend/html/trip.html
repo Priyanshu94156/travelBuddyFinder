@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/custom.css">
 	<link rel="stylesheet" href="../css/trip.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    
 </head>
 <body class="noflow">
 	<div class="container">
@@ -74,7 +76,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="trip_card mx-0  friends row">
+								<!-- <div class="trip_card mx-0  friends row">
 									<div class="col-sm-4 pr-0 pl-0">
 										<img src="../static/images/bg1.jpg" class="img-fluid">
 									</div>
@@ -153,7 +155,7 @@
 											<span>Female</span>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -162,67 +164,81 @@
 					<div class="col-sm-8 rightContentArea unscrollMain">
 						<header class="d-flex align-items-center">
 							<h6 class="m-0">< Back</h6>
-							<h5 class="mx-auto">Search</h5>
+							<h5 class="mx-auto">Create Trip</h5>
 
 						</header>
 						<div class="scrollArea">
 							<ul class="nav nav-tabs" id="search_tab" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active c1" id="travelFriend-tab" data-toggle="tab" href="#travelFriend" role="tab" aria-controls="travelFriend" aria-selected="true" >Travel Friend</a>
+									<a class="nav-link active c1" id="travelFriend-tab" data-toggle="tab" href="#travelFriend" role="tab" aria-controls="travelFriend" aria-selected="true" >Create Your Trip Here</a>
 								</li>
-								<li class="nav-item">
+								<!-- <li class="nav-item">
 									<a class="nav-link c2" id="travelDate-tab" data-toggle="tab" href="#travelDate" role="tab" aria-controls="travelDate" aria-selected="false">Travel Date</a>
-								</li>
+								</li> -->
 
 							</ul>
 							<div class="tab-content secScrollArea" id="myTabContent">
 								<div class="tab-pane fade show active px-3 " id="travelFriend" role="tabpanel" aria-labelledby="travelFriend-tab">
 									<form onsubmit="return false" class="pb-2">
-										<input type="text" name="tripname" placeholder="Trip Name" class="form-control customInp">
-										<input type="text" name="Description" placeholder="Description" class="form-control customInp">
+										<input type="text" name="tripname" id="tripName" placeholder="Trip Name" class="form-control customInp">
+										<input type="text" name="Description" id="description" placeholder="Description" class="form-control customInp">
 										<div class="row">
-											<div class="col"><input type="text" name="fromcity" placeholder="From City, Country" class="form-control customInp"></div>
-											<div class="col"><input type="text" name="tocity" placeholder="To City, Country" class="form-control customInp"></div>
+											<div class="col"><input type="text" name="fromcity" id="from" placeholder="From City, Country" class="form-control customInp"></div>
+											<div class="col"><input type="text" name="tocity" id="to" placeholder="To City, Country" class="form-control customInp"></div>
 										</div>
 										<div class="form-group row mb-0">
 											<h6 class="col-12">Trip Dates</h6>
 											<div class="col-6">
 												<label for="fromDate" class="col-form-label customLabel">Start Date</label>
-												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="fromDate">
+												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="startDate">
 											</div>
 											<div class="col-6">
 												<label for="toDate" class="col-form-label customLabel">End Date</label>
-												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="toDate">
+												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="endDate">
 											</div>
 										</div>
-										<div class="mt-1 mb-1 tripdateFlex">
+										<h6 class="pt-2">Flexibilty with Date</h6>
+										<label for="flexible">Are you Flexible with date change:</label>
+
+										<select id="flexible" class="theme1btn btn">
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+										</select>
+										<!-- <div class="mt-1 mb-1 tripdateFlex">
 											<button class="theme1btn selected btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Strict</button>
 											<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Flexible</button>
 											<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Worout the dates</button>
-										</div>
+										</div> -->
 
 										<h6 class="pt-2">Preferences</h6>
-										<div class="mt-2 mb-1 genderRadio">
-											<button class="theme1btn selected btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .genderRadio')">Female</button>
+										<label for="preferences">Choose Gender Preferences:</label>
+
+										<select id="preferences" class="theme1btn btn">
+										<option value="female">Female</option>
+										<option value="male">Male</option>
+										<option value="any">Any</option>
+										</select>
+										<!-- <div class="mt-2 mb-1 genderRadio">
+											<button class="theme1btn selected btn" id="" onclick="toggleSel($(this),'.theme1btn','#travelFriend .genderRadio')">Female</button>
 											<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .genderRadio')">Male</button>
 											<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .genderRadio')">Any</button>
-										</div>
+										</div> -->
 										<div class="form-group row mb-0 mt-3">
 											<h6 class="col-12">Trip Dates</h6>
 
-											<div class="col"><input type="text" name="travcost" placeholder="Travelling Cost" class="form-control customInp"></div>
-											<div class="col"><input type="text" name="keywords" placeholder="Keywords" class="form-control customInp"></div>
+											<div class="col"><input type="text" name="travcost" id="travellingCost" placeholder="Travelling Cost" class="form-control customInp"></div>
+											<div class="col"><input type="text" name="keywords" id="keywords" placeholder="Keywords" class="form-control customInp"></div>
 
 										</div>
 										<h6 class="c1">ADD TRIP PHOTO</h6>
 										<div class="row text-center flex-column justify-content-center align-items-center">
 											<p>Total Trips to Create: <span class="fw500">3</span></p>
-											<button class="btn theme1btn text-uppercase selected f4">Create Trip</button>
+											<button class="btn theme1btn text-uppercase selected f4" onclick="createTrip()">Create Trip</button>
 										</div>
 									</form>
 								</div>
 								<!-- trips -->
-								<div class="tab-pane fade px-3 " id="travelDate" role="tabpanel" aria-labelledby="trips-tab">
+								<!-- <div class="tab-pane fade px-3 " id="travelDate" role="tabpanel" aria-labelledby="trips-tab">
 									<form onsubmit="return false" class="pb-2">
 										<input type="text" name="tripname" placeholder="Trip Name" class="form-control customInp">
 										<input type="text" name="Description" placeholder="Description" class="form-control customInp">
@@ -266,7 +282,7 @@
 											<button class="btn theme2-btn text-uppercase  f4">Create Trip</button>
 										</div>
 									</form>
-								</div>
+								</div> -->
 
 							</div>
 						</div>
@@ -298,6 +314,7 @@
 		</footer>
 	</div>
 
+	<script src="../js/trip.js"></script>
 </body>
 <script
 src="https://code.jquery.com/jquery-3.3.1.min.js"

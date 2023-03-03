@@ -75,13 +75,13 @@ signinbtn.addEventListener('click', function() {
         success:function(data){
 			console.log("sucessful");
 			data = JSON.parse(data) 
-			console.log("data",data.status);
+			// console.log("data",data.email);
 			
 			if(data.status =="valid"){
-				console.log("data",data);
+				// console.log("data",data);
 				var username=email.split('@')[0]
-				console.log(username)
-				localStorage.setItem("userName",data.username);
+				// console.log(username)
+				window.localStorage.setItem("email",data.email)
 				window.location.replace("profile.html");
 
 				alert("successful login")

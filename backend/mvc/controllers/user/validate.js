@@ -12,9 +12,10 @@ function  validate(req,res){
             if(data.length==1){
                 var response = {
                     status:"valid",
-                    email:data.email,
+                    email:req.body.email
                 }
                 // response = JSON.parse(response)
+                console.log(response)
                 res.send(JSON.stringify(response))
             }else{
                 var response = { status:"invalid",username:''}

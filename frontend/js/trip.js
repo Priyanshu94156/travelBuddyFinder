@@ -3,7 +3,7 @@
 
 function createTrip() {
     var trip = {
-        owner:'kukunuriabhiram.19.it@anits.edu.in',
+        owner:window.localStorage.getItem('email'),
         tripName:$('#tripName').val(),
         description:$('#description').val(),
         from:$('#from').val(),

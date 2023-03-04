@@ -12,7 +12,7 @@ function  validate(req,res){
             if(data.length==1){
                 var response = {
                     status:"valid",
-                    email:req.body.email,
+                    email:req.body.email
                 }
                 // response = JSON.parse(response)
                 console.log(response)

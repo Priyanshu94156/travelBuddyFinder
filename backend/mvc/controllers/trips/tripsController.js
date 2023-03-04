@@ -1,5 +1,6 @@
 const express = require('express');
 const tripCtrl = require("../../models/trips")
+const user = require('../../models/userModel').userModel;
 
 
 function addTrips(req, res){
@@ -27,9 +28,34 @@ function addTrips(req, res){
             res.send(err)
         }else{
             console.log("added")
-            res.send("new Trip added successfully")
         }
     })
+
+    // console.log(req.body.)
+    user.findOne({email:req.body.owner},(err,data)=>{
+        if(err){
+            res.send('error') 
+
+        }
+        else{
+            console.log(data)
+            console.log("data",req.body)
+            if(data.currentSubscription>0){
+
+                user.updateOne({email:req.body.owner},{$set:{currentSubscription:data.currentSubscription-1}},(err,data)=>{
+                    if(err){
+                        res.send(err)
+                    }else{
+                        res.send(data)
+                    }
+                })
+            }else{
+                res.send('buy a subscription')
+            }
+        }
+    }
+    )
+                
 }
 
 function getAllTrips(req,res){

@@ -27,7 +27,13 @@ const userSchema= mongoose.Schema({
         type:String,
         // required:true
     },
-    Trips:[{
+    currentSubscription:{
+        type:Number
+    },
+    previousSubscriptions:[{
+        type:Object
+    }],
+    trips:[{
         type:Object
     }],
 })

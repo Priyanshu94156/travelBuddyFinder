@@ -75,6 +75,7 @@ signinbtn.addEventListener('click', function() {
         success:function(data){
 			console.log("sucessful");
 			data = JSON.parse(data) 
+			localStorage.setItem("token",data.token);
 			//console.log("data",data.status);
 			
 			if(data.status =="valid"){

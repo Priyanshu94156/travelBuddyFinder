@@ -14,9 +14,14 @@ var description = $("#description");
 var birthday = $("#birthday");
 
 var email = (window.localStorage.getItem('email'))
+$.ajaxSetup({
+    beforeSend: function(xhr){
+        xhr.setRequestHeader('token', localStorage.getItem('token'));
+    }
+});
 getUserDetails()
 function getUserDetails(){
-    $.get(url+"/user/fetchUser/"+email,function(data,status){
+    $.get(url+"/abc/fetchUser/"+email,function(data,status){
         console.log(data)
         userName.html(data[0].name)
         userAddress.html(data[0].address)

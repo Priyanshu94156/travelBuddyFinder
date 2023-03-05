@@ -177,9 +177,9 @@
 								</li> -->
 
 							</ul>
-							<div class="tab-content secScrollArea" id="myTabContent">
+							<div class="tab-content secScrollArea" id="myTabContent" >
 								<div class="tab-pane fade show active px-3 " id="travelFriend" role="tabpanel" aria-labelledby="travelFriend-tab">
-									<form onsubmit="return false" class="pb-2">
+									<form onsubmit="return false" class="pb-2" name="myform" id="myform" enctype="multipart/form-data">
 										<input type="text" name="tripname" id="tripName" placeholder="Trip Name" class="form-control customInp">
 										<input type="text" name="Description" id="description" placeholder="Description" class="form-control customInp">
 										<div class="row">
@@ -230,7 +230,8 @@
 											<div class="col"><input type="text" name="keywords" id="keywords" placeholder="Keywords" class="form-control customInp"></div>
 
 										</div>
-										<h6 class="c1">ADD TRIP PHOTO</h6>
+										<h6 class="c1">ADD TRIP PHOTOS</h6>
+										<input type="file" id="File" name="photos" class="form-control" rows="3" multiple>
 										<div class="row text-center flex-column justify-content-center align-items-center">
 											<p>Total Trips to Create: <span class="fw500">3</span></p>
 											<button class="btn theme1btn text-uppercase selected f4" onclick="createTrip()">Create Trip</button>

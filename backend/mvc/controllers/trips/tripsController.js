@@ -5,6 +5,13 @@ const user = require('../../models/userModel').userModel;
 
 function addTrips(req, res){
     console.log("body",req.body)
+    pics=[]
+   
+    console.log("length",req.files.length)
+    for (let i=0; i<req.files.length; i++){
+        pics.push(req.files[i].location)
+    }
+    console.log("pics",pics)
     //if (type(req.body.owner)==String){}
     let addTripData = tripCtrl.tripModel({
         owner:req.body.owner,
@@ -18,9 +25,9 @@ function addTrips(req, res){
         preferences:req.body.preferences,
         keywords:req.body.keywords,
         travellingCost:req.body.travellingCost,
-        photos:req.body.photos
+        photos:pics
+        // File:req.file.location
     })
-
     console.log("showing addTrip",addTripData)   
     addTripData.save((err,result)=>{
         if(err){
@@ -30,7 +37,7 @@ function addTrips(req, res){
             console.log("added")
         }
     })
-
+    console.log("hi",req.body.owner);
     // console.log(req.body.)
     user.findOne({email:req.body.owner},(err,data)=>{
         if(err){
@@ -39,7 +46,7 @@ function addTrips(req, res){
         }
         else{
             console.log(data)
-            console.log("data",req.body)
+            // console.log("data",req.body)
             if(data.currentSubscription>0){
 
                 user.updateOne({email:req.body.owner},{$set:{currentSubscription:data.currentSubscription-1}},(err,data)=>{
@@ -55,8 +62,33 @@ function addTrips(req, res){
         }
     }
     )
-                
 }
+
+// function studentToUserStep1(req, res){
+//     UserCTRl.User.find({email:req.body.email},(err,docs) =>{
+//         if(err){
+//             console.log(err)
+//         }else{
+//             console.log(docs)
+//             // let message = req.body.Message
+//             // let Files = req.body.File
+//             // let Linked = req.body.Linked
+//             // console.log(typeof(req.body.Message))
+//             console.log(req.body)
+            
+//             UserCTRl.User.updateOne({email:req.body.email},
+//                 {$set:{isInstructor:"pending",Message:req.body.Message,File:req.file.location,Linked:req.body.Linked}},(err,docs) =>{
+//                 if(err){
+//                     console.log(err)
+//                 }else{
+//                     res.send(docs)
+//                 }
+//             })
+//                 // res.send(docs)
+//             }
+//         })
+// }
+
 
 function getAllTrips(req,res){
      tripCtrl.tripModel.find({},(err,data)=>{

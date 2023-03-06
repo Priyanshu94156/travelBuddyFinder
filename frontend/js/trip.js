@@ -18,6 +18,12 @@ function createTrip() {
     console.log("simple")
     console.log(pics.files)
     
+    $.ajaxSetup({
+        beforeSend: function(xhr){
+            xhr.setRequestHeader('token', localStorage.getItem('token'));
+        }
+    });
+
     // for(let i=0; i<pics.files.length; i++){
     //     console.log(pics.files[i])
     //     photos.push(pics.files[i])
@@ -25,24 +31,24 @@ function createTrip() {
     // console.log(photos)
     // let tripData = new FormData();
     // tripData.append("owner",owner);
-    // tripData.append("description",description);
-    // tripData.append("from",from);
-    // tripData.append("to",to);
-    // tripData.append("startDate",startDate);
-    // tripData.append("endData",endDate);
-    // tripData.append("flexible",flexible);
-    // tripData.append("preferences",preferences);
-    // tripData.append("keywords",keywords);
-    // tripData.append("travellingCost",travellingCost);
-    // tripData.append("photos",pics.files);
     
     
 
 
     let formdata = new FormData(document.querySelector("#myform"));
     formdata.set("owner", owner)
-    console.log("formdata: ",formdata);
+    formdata.set("description",description);
+    formdata.set("from",from);
+    formdata.set("to",to);
+    formdata.set("startDate",startDate);
+    formdata.set("endData",endDate);
+    formdata.set("flexible",flexible);
+    formdata.set("preferences",preferences);
+    // formdata.set("keywords",keywords);
+    formdata.set("travellingCost",travellingCost);
+    // tripData.append("photos",pics.files);
     
+    console.log("formdata: ",formdata);
     
 
     $.ajax({

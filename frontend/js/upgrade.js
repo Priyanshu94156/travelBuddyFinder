@@ -1,7 +1,6 @@
 // import getUrl from './url.js'
 // const url = getUrl()
 // console.log(url)
-
 $.ajaxSetup({
     beforeSend: function(xhr){
         xhr.setRequestHeader('token', localStorage.getItem('token'));
@@ -9,8 +8,7 @@ $.ajaxSetup({
 });
 
 $("#silver").click(()=>{
-    // "email":"akash@gmail.com",
-    // "currentSubscription":5
+  
     email=localStorage.getItem("email"),
     currentSubscription=2
     suscription={
@@ -19,13 +17,15 @@ $("#silver").click(()=>{
     }
     suscription=JSON.stringify(suscription)
     $.ajax({
-        method:POST,
+        method:"POST",
         contentType:"application/json",
         data:suscription,
-        url:url+"/user/getSubscription",
+        url:"http://localhost:3003/subscribe/getSubscription",
         success:(e)=>{
-            alert("you are subscribed to silver edition")
-            window.location.replace("trip.html")
+            console.log(e)
+            if(e == "token not found") alert("token not found")
+            else
+            alert("you are subscribed to gold edition")
         },
         error:(e)=>{
             alert(e)
@@ -35,8 +35,7 @@ $("#silver").click(()=>{
 })
 
 $("#gold").click(()=>{
-    // "email":"akash@gmail.com",
-    // "currentSubscription":5
+  
     email=localStorage.getItem("email"),
     currentSubscription=5
     suscription={
@@ -48,10 +47,12 @@ $("#gold").click(()=>{
         method:"POST",
         contentType:"application/json",
         data:suscription,
-        url:"http://localhost:3003/user/getSubscription",
+        url:"http://localhost:3003/subscribe/getSubscription",
         success:(e)=>{
+            console.log(e)
+            if(e == "token not found") alert("token not found")
+            else
             alert("you are subscribed to gold edition")
-            window.location.replace("trip.html")
         },
         error:(e)=>{
             alert(e)
@@ -61,23 +62,24 @@ $("#gold").click(()=>{
 })
 
 $("#platinum").click(()=>{
-    // "email":"akash@gmail.com",
-    // "currentSubscription":5
+  
     email=localStorage.getItem("email"),
-    currentSubscription=2
+    currentSubscription=10
     suscription={
         email:email,
         currentSubscription:currentSubscription
     }
     suscription=JSON.stringify(suscription)
     $.ajax({
-        method:POST,
+        method:"POST",
         contentType:"application/json",
         data:suscription,
-        url:url+"/user/getSubscription",
+        url:"http://localhost:3003/subscribe/getSubscription",
         success:(e)=>{
-            alert("you are subscribed to platinum edition")
-            window.location.replace("trip.html")
+            console.log(e)
+            if(e == "token not found") alert("token not found")
+            else
+            alert("you are subscribed to gold edition")
         },
         error:(e)=>{
             alert(e)

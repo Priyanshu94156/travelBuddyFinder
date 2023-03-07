@@ -59,7 +59,7 @@ async function getSubscription(req, res) {
 
         }else{
             console.log(data.currentSubscription)
-            if(data.currentSubscription>=0){
+            if(data.currentSubscription>=0 || data.currentSubscription==null){
                 user.updateOne({email:req.body.email},{$set:{currentSubscription:req.body.currentSubscription},$push:{previousSubscriptions:req.body.currentSubscription}},(err,data)=>{
                     if(err){
                         res.send(err) 

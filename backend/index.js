@@ -6,6 +6,7 @@ const app = express();
 const userRoutes = require('./mvc/routes/user');
 const tripRoutes = require('./mvc/routes/trips');
 const abcRoutes = require('./mvc/routes/abc');
+const subscriptionRoutes = require('./mvc/routes/subscription')
 const storyRoutes = require('./mvc/routes/stories');
 const jwt = require('jsonwebtoken');
 app.use(cors());
@@ -17,7 +18,7 @@ try{
     var token = req.headers.token
     console.log(token);
     var validated = jwt.verify(token,secretkey)
-    console.log("sfsdf", validated)
+    console.log("ssssss",validated)
     if(validated)
         next();
     else
@@ -28,7 +29,7 @@ catch(e){
     res.send("token not found");
 }
 })
-
+app.use('/subscribe',subscriptionRoutes)
 app.use('/abc', abcRoutes);
 app.use('/trip',tripRoutes);
 app.use('/stories',storyRoutes)

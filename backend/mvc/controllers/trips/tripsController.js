@@ -4,14 +4,12 @@ const user = require('../../models/userModel').userModel;
 
 
 function addTrips(req, res){
-    console.log("body",req.body)
     pics=[]
    
     console.log("length",req.files.length)
     for (let i=0; i<req.files.length; i++){
         pics.push(req.files[i].location)
     }
-    console.log("pics",pics)
     //if (type(req.body.owner)==String){}
     let addTripData = tripCtrl.tripModel({
         owner:req.body.owner,
@@ -37,7 +35,6 @@ function addTrips(req, res){
             console.log("added")
         }
     })
-    console.log("hi",req.body.owner);
     // console.log(req.body.)
     user.findOne({email:req.body.owner},(err,data)=>{
         if(err){
@@ -45,7 +42,6 @@ function addTrips(req, res){
 
         }
         else{
-            console.log(data)
             // console.log("data",req.body)
             if(data.currentSubscription>0){
 
@@ -54,6 +50,7 @@ function addTrips(req, res){
                         res.send(err)
                     }else{
                         res.send(data)
+                        console.log("data", data)
                     }
                 })
             }else{

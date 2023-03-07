@@ -6,6 +6,7 @@ const app = express();
 const userRoutes = require('./mvc/routes/user');
 const tripRoutes = require('./mvc/routes/trips');
 const abcRoutes = require('./mvc/routes/abc');
+const storyRoutes = require('./mvc/routes/stories');
 const jwt = require('jsonwebtoken');
 app.use(cors());
 app.use(express.json());
@@ -16,6 +17,7 @@ try{
     var token = req.headers.token
     console.log(token);
     var validated = jwt.verify(token,secretkey)
+    console.log("sfsdf", validated)
     if(validated)
         next();
     else
@@ -29,5 +31,6 @@ catch(e){
 
 app.use('/abc', abcRoutes);
 app.use('/trip',tripRoutes);
+app.use('/stories',storyRoutes)
 
 app.listen(3003);

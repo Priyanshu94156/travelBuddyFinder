@@ -33,18 +33,19 @@ function addUser(req,res){
 }
 
 function subscribeValidation(req,res){
-    console.log(req.body)
+    console.log("asd",req.body)
     user.findOne({email:req.body.email},(err,data)=>{
         if(err){
             res.send('error') 
         }else{
+            console.log("data",data)
             console.log("your",data.currentSubscription)
             if(data.currentSubscription>=1){
-                var response = {message:"you have a subscription"}
-                res.send(JSON.stringify(response))
+                // var response = {message:"you have a subscription"}
+                res.send("you have a subscription")
             }else{
-                var response = {message:"you don't have a subscription plan"}
-                res.send(JSON.stringify(response))
+                // var response = {message:"you don't have a subscription plan"}
+                res.send("you don't have a subscription plan")
             }
         }
     })

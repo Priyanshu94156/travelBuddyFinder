@@ -1,5 +1,9 @@
 // const { getAllTrips } = require("../../backend/mvc/controllers/trips/tripsController");
-
+$.ajaxSetup({
+    beforeSend: function(xhr){
+        xhr.setRequestHeader('token', localStorage.getItem('token'));
+    }
+});
 getTrips()
 
 function getTrips(){

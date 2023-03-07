@@ -16,7 +16,7 @@ app.use('/user',userRoutes);
 app.use("/",async(req,res,next)=>{
 try{
     var token = req.headers.token
-    console.log(token);
+    console.log("asdasdas",token);
     var validated = jwt.verify(token,secretkey)
     console.log("ssssss",validated)
     if(validated)

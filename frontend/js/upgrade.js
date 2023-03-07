@@ -5,12 +5,12 @@ window.onload= () =>{
 $.ajaxSetup({
     beforeSend: function(xhr){
         xhr.setRequestHeader('token', localStorage.getItem('token'));
+        console.log(localStorage.getItem('token'));
     }
 });
 }
 
 $("#silver").click(()=>{
-  
     email=localStorage.getItem("email"),
     currentSubscription=2
     suscription={

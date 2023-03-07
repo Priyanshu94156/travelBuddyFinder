@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,46 +173,46 @@
 								<li class="nav-item">
 									<a class="nav-link active c1" id="travelFriend-tab" data-toggle="tab" href="#travelFriend" role="tab" aria-controls="travelFriend" aria-selected="true" >Create Your Trip Here</a>
 								</li>
-								<!-- <li class="nav-item">
-									<a class="nav-link c2" id="travelDate-tab" data-toggle="tab" href="#travelDate" role="tab" aria-controls="travelDate" aria-selected="false">Travel Date</a>
-								</li> -->
+								<li class="nav-item">
+									<a class="nav-link c2" id="story-tab" data-toggle="tab" href="#story" role="tab" aria-controls="story" aria-selected="false">Share your stories</a>
+								</li>
 
 							</ul>
 							<div class="tab-content secScrollArea" id="myTabContent" >
-								<div class="tab-pane fade show active px-3 " id="travelFriend" role="tabpanel" aria-labelledby="travelFriend-tab">
-									<form onsubmit="return false" class="pb-2" name="myform" id="myform" enctype="multipart/form-data">
-										<input type="text" name="tripname" id="tripName" placeholder="Trip Name" class="form-control customInp">
-										<input type="text" name="Description" id="description" placeholder="Description" class="form-control customInp">
-										<div class="row">
-											<div class="col"><input type="text" name="fromcity" id="from" placeholder="From City, Country" class="form-control customInp"></div>
-											<div class="col"><input type="text" name="tocity" id="to" placeholder="To City, Country" class="form-control customInp"></div>
-										</div>
-										<div class="form-group row mb-0">
-											<h6 class="col-12">Trip Dates</h6>
-											<div class="col-6">
-												<label for="fromDate" class="col-form-label customLabel">Start Date</label>
-												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="startDate">
+									<div class="tab-pane fade show active px-3 " id="travelFriend" role="tabpanel" aria-labelledby="travelFriend-tab">
+										<form onsubmit="return false" class="pb-2" name="myform" id="myform" enctype="multipart/form-data">
+											<input type="text" name="tripname" id="tripName" placeholder="Trip Name" class="form-control customInp">
+											<input type="text" name="Description" id="description" placeholder="Description" class="form-control customInp">
+											<div class="row">
+												<div class="col"><input type="text" name="fromcity" id="from" placeholder="From City, Country" class="form-control customInp"></div>
+												<div class="col"><input type="text" name="tocity" id="to" placeholder="To City, Country" class="form-control customInp"></div>
 											</div>
-											<div class="col-6">
-												<label for="toDate" class="col-form-label customLabel">End Date</label>
-												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="endDate">
+											<div class="form-group row mb-0">
+												<h6 class="col-12">Trip Dates</h6>
+												<div class="col-6">
+													<label for="fromDate" class="col-form-label customLabel">Start Date</label>
+													<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="startDate">
+												</div>
+												<div class="col-6">
+													<label for="toDate" class="col-form-label customLabel">End Date</label>
+													<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="endDate">
+												</div>
 											</div>
-										</div>
-										<h6 class="pt-2">Flexibilty with Date</h6>
-										<label for="flexible">Are you Flexible with date change:</label>
+											<h6 class="pt-2">Flexibilty with Date</h6>
+											<label for="flexible">Are you Flexible with date change:</label>
 
-										<select id="flexible" class="theme1btn btn">
-										<option value="yes">Yes</option>
-										<option value="no">No</option>
-										</select>
-										<!-- <div class="mt-1 mb-1 tripdateFlex">
-											<button class="theme1btn selected btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Strict</button>
-											<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Flexible</button>
-											<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Worout the dates</button>
-										</div> -->
+											<select id="flexible" class="theme1btn btn">
+											<option value="yes">Yes</option>
+											<option value="no">No</option>
+											</select>
+											<!-- <div class="mt-1 mb-1 tripdateFlex">
+												<button class="theme1btn selected btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Strict</button>
+												<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Flexible</button>
+												<button class="theme1btn btn" onclick="toggleSel($(this),'.theme1btn','#travelFriend .tripdateFlex')">Worout the dates</button>
+											</div> -->
 
-										<h6 class="pt-2">Preferences</h6>
-										<label for="preferences">Choose Gender Preferences:</label>
+											<h6 class="pt-2">Preferences</h6>
+											<label for="preferences">Choose Gender Preferences:</label>
 
 										<select id="preferences" name="preferences" class="theme1btn btn">
 										<option value="female" name="female">Female</option>
@@ -229,61 +230,33 @@
 											<div class="col"><input type="text" name="travellingCost" id="travellingCost" placeholder="Travelling Cost" class="form-control customInp"></div>
 											<div class="col"><input type="text" name="keywords" id="keywords" placeholder="Keywords" class="form-control customInp"></div>
 
+											</div>
+											<h6 class="c1">ADD TRIP PHOTOS</h6>
+											<input type="file" id="File" name="photos" class="form-control" rows="3" multiple>
+											<div class="row text-center flex-column justify-content-center align-items-center">
+												<p>Total Trips to Create: <span class="fw500">3</span></p>
+												<button class="btn theme1btn text-uppercase selected f4" onclick="createTrip()">Create Trip</button>
+											</div>
+										</form>
+									</div>
+								<!-- trips -->
+								<div class="tab-pane fade px-3 " id="story" role="tabpanel" aria-labelledby="trips-tab">
+									<form onsubmit="return false" class="pb-2" id="storyform">
+										<input type="text" name="tripName" placeholder="Trip Name" class="form-control customInp">
+										<div class="row">
+											<div class="col"><input type="text" name="from" placeholder="From City, Country" class="form-control customInp"></div>
+											<div class="col"><input type="text" name="to" placeholder="To City, Country" class="form-control customInp"></div>
 										</div>
-										<h6 class="c1">ADD TRIP PHOTOS</h6>
+										<textarea name="description" placeholder="Description" class="form-control customInp" id="" cols="30" rows="10"></textarea>
+									
+										<h6 class="c1">ADD PHOTOS TO YOU STORY</h6>
 										<input type="file" id="File" name="photos" class="form-control" rows="3" multiple>
 										<div class="row text-center flex-column justify-content-center align-items-center">
-											<p>Total Trips to Create: <span class="fw500">3</span></p>
-											<button class="btn theme1btn text-uppercase selected f4" onclick="createTrip()">Create Trip</button>
-										</div>
+											<p>Total Stories to Create: <span class="fw500">3</span></p>
+											<button class="btn theme2-btn text-uppercase  f4" onclick="createStory()">Post Story</button>
+										</div> 
 									</form>
 								</div>
-								<!-- trips -->
-								<!-- <div class="tab-pane fade px-3 " id="travelDate" role="tabpanel" aria-labelledby="trips-tab">
-									<form onsubmit="return false" class="pb-2">
-										<input type="text" name="tripname" placeholder="Trip Name" class="form-control customInp">
-										<input type="text" name="Description" placeholder="Description" class="form-control customInp">
-										<div class="row">
-											<div class="col"><input type="text" name="fromcity" placeholder="From City, Country" class="form-control customInp"></div>
-											<div class="col"><input type="text" name="tocity" placeholder="To City, Country" class="form-control customInp"></div>
-										</div>
-										<div class="form-group row mb-0">
-											<h6 class="col-12">Trip Dates</h6>
-											<div class="col-6">
-												<label for="fromDate" class="col-form-label customLabel">Start Date</label>
-												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="fromDate">
-											</div>
-											<div class="col-6">
-												<label for="toDate" class="col-form-label customLabel">End Date</label>
-												<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="toDate">
-											</div>
-										</div>
-										<div class="mt-1 mb-1 tripdateFlex">
-											<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','#travelDate .tripdateFlex')">Strict</button>
-											<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','#travelDate .tripdateFlex')">Flexible</button>
-											<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','#travelDate .tripdateFlex')">Worout the dates</button>
-										</div>
-
-										<h6 class="pt-2">Preferences</h6>
-										<div class="mt-2 mb-1 genderRadio">
-											<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','#travelDate .genderRadio')">Female</button>
-											<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','#travelDate .genderRadio')">Male</button>
-											<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','#travelDate .genderRadio')">Any</button>
-										</div>
-										<div class="form-group row mb-0 mt-3">
-											<h6 class="col-12">Trip Dates</h6>
-
-											<div class="col"><input type="text" name="travcost" placeholder="Travelling Cost" class="form-control customInp"></div>
-											<div class="col"><input type="text" name="keywords" placeholder="Keywords" class="form-control customInp"></div>
-
-										</div>
-										<h6 class="c2">ADD TRIP PHOTO</h6>
-										<div class="row text-center flex-column justify-content-center align-items-center">
-											<p>Total Trips to Create: <span class="fw500">3</span></p>
-											<button class="btn theme2-btn text-uppercase  f4">Create Trip</button>
-										</div>
-									</form>
-								</div> -->
 
 							</div>
 						</div>

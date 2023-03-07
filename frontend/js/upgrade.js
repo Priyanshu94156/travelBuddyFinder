@@ -1,7 +1,7 @@
 // import getUrl from './url.js'
 // const url = getUrl()
 // console.log(url)
-window.onload = () =>{
+window.onload= () =>{
 $.ajaxSetup({
     beforeSend: function(xhr){
         xhr.setRequestHeader('token', localStorage.getItem('token'));

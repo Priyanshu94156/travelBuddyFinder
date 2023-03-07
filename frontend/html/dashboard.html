@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/custom.css">
 	<link rel="stylesheet" href="../css/dashboard.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body class="noflow">
 	<div class="container">
@@ -61,34 +62,20 @@
 									<a class="nav-link active c2" id="trips-tab" data-toggle="tab" href="#trips" role="tab" aria-controls="trips" aria-selected="false" data-en='.tripEn'>Featuerd Trips</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link c1" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" data-en='.memberEn'>Featuerd Members</a>
+									<a class="nav-link c1" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" data-en='.memberEn'>Stories</a>
 								</li>
 							</ul>
 							<div class="tab-content" id="myTabContent">
 								<!-- trips -->
 								<div class="tab-pane fade show active px-3 pt-3" id="trips" role="tabpanel" aria-labelledby="trips-tab">
-									<div class="search_results row px-4 secScrollArea">
-										<div class="trip_card date row">
-											<div class="col-sm-3 pr-0">
-												<img src="../static/images/bg1.jpg" class="img-fluid">
-											</div>
-											<div class="col-sm-6">
-												<div class="trip_location">
-													<span class="tl">London</span>
-													<span class="trip_color"> -> </span>
-													<span class="tl">Paris</span>
-													<span class="trip_color"> ! </span>
-												</div>
-												<div class="trip_date">11.07.2008 - 01.02-2008</div>
-												<div class="trip_type"><span class="trip_color">Date Trip</span> 
-													<span>We'll split 50-50</span>
-												</div>
-											</div>
-											<div class="col-sm-3 d-flex align-items-center">
+									<div class="search_results row px-4 secScrollArea" id="displayTrips">
+										
+											<!-- <div class="col-sm-3 d-flex align-items-center">
 												<button class="btn theme2-btn f3">Ask to join</button>
-											</div>
+											</div> -->
 										</div>
-										<div class="trip_card friends row">
+
+										<!-- <div class="trip_card friends row">
 											<div class="col-sm-3 pr-0">
 												<img src="../static/images/bg1.jpg" class="img-fluid">
 											</div>
@@ -179,7 +166,7 @@
 											<div class="col-sm-3 d-flex align-items-center">
 												<button class="btn theme2-btn f3">Ask to join</button>
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
 								<div class="tab-pane fade  px-3" id="members" role="tabpanel" aria-labelledby="members-tab">
@@ -272,8 +259,9 @@
 			</div>
 		</footer>
 	</div>
-
+	<script src="../js/dashboard.js"></script>
 </body>
+
 <script
 src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

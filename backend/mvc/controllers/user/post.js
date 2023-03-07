@@ -7,7 +7,8 @@ function addUser(req,res){
         password: req.body.password,
         phno: req.body.phno,
         age: req.body.age,
-        gender: req.body.gender
+        gender: req.body.gender,
+        currentSubscription:0
     })
     user.find({email:req.body.email},(err,data)=>{
         if(err){
@@ -31,4 +32,50 @@ function addUser(req,res){
     })
 }
 
-module.exports = {addUser}
+function subscribeValidation(req,res){
+    console.log("asd",req.body)
+    user.findOne({email:req.body.email},(err,data)=>{
+        if(err){
+            res.send('error') 
+        }else{
+            console.log("data",data)
+            console.log("your",data.currentSubscription)
+            if(data.currentSubscription>=1){
+                // var response = {message:"you have a subscription"}
+                res.send("you have a subscription")
+            }else{
+                // var response = {message:"you don't have a subscription plan"}
+                res.send("you don't have a subscription plan")
+            }
+        }
+    })
+
+}
+
+async function getSubscription(req, res) {
+    console.log(req.body)
+    user.findOne({email:req.body.email},(err,data)=>{
+        if(err){
+            res.send('error') 
+
+        }else{
+            console.log(data.currentSubscription)
+            if(data.currentSubscription>=0 || data.currentSubscription==null){
+                currentSubscription=data.currentSubscription+req.body.currentSubscription
+                user.updateOne({email:req.body.email},{$set:{currentSubscription:currentSubscription},$push:{previousSubscriptions:req.body.currentSubscription}},(err,data)=>{
+                    if(err){
+                        res.send(err) 
+                    }else{
+                        console.log(data)
+                        res.send("you have successfully Subscribed")
+                    }
+                })
+                
+            }else{
+               res.send("checkcode")
+            }
+        }
+    })
+}
+
+module.exports = {addUser,getSubscription,subscribeValidation}

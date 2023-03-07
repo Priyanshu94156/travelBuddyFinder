@@ -1,3 +1,4 @@
+// import { application, json } from 'express';
 import getUrl from './url.js'
 const url = getUrl()
 console.log(url)
@@ -16,9 +17,14 @@ var description = $("#description");
 var birthday = $("#birthday");
 
 var email = (window.localStorage.getItem('email'))
+$.ajaxSetup({
+    beforeSend: function(xhr){
+        xhr.setRequestHeader('token', localStorage.getItem('token'));
+    }
+});
 getUserDetails()
 function getUserDetails(){
-    $.get(url+"/user/fetchUser/"+email,function(data,status){
+    $.get(url+"/abc/fetchUser/"+email,function(data,status){
         console.log(data)
         userName1.html(data[0].name)
         userEmail.html(email)
@@ -141,3 +147,25 @@ function edit() {
         barDisplay();
     }
   
+dat={
+email:localStorage.getItem('email')
+}
+var dat=JSON.stringify(dat)
+console.log(dat)
+$('#trip').click(()=>{
+    console.log("click",dat)
+    $.ajax({
+        method:"POST",
+        contentType:'application/json',
+        data:dat,
+        url:url+"/subscribe/subscriptionValid",
+        success:(e)=>{
+            console.log(e)
+            if (e=="you have a subscription"){
+                window.location.replace("trip.html")
+            }else if(e=="you don't have a subscription plan"){
+                window.location.replace("upgrade.html")
+            }
+        }
+    })
+})

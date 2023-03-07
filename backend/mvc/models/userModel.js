@@ -48,7 +48,13 @@ const userSchema= mongoose.Schema({
     height:{
         type:Number,
     },
-    Trips:[{
+    currentSubscription:{
+        type:Number
+    },
+    previousSubscriptions:[{
+        type:Object
+    }],
+    trips:[{
         type:Object
     }],
 })

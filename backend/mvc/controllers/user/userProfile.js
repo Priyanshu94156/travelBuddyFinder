@@ -7,7 +7,15 @@ function updateUser(req, res) {
         { email: req.params.email },
         {
             $set:
-                { phno: req.body.phno }
+                {   phno: req.body.phno ,
+                    gender:req.body.gender,
+                    height:req.body.height,
+                    city:req.body.city,
+                    name:req.body.name,
+                    nationality:req.body.nationality,
+                    smoking:req.body.smoking,
+                    drinking:req.body.drinking,
+                    description:req.body.description}
         },
         (err,data)=>{
             if(err){

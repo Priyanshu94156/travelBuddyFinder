@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 	new fullpage('#fullpage', {
 		menu: '#menu',
@@ -40,24 +39,13 @@ $(document).on('click', '.menu-link', function(){
 });
 
 
-//google sign in
-$("#googlebtn").click(()=>{
-	console.log("clicked")
-    // window.location.href="http://localhost:3002/auth/google";
-})
+// ----------------------------------------------------------------------------------------------//
 
-// import getUrl from "./url";
-// const urlHead = getUrl();
 
 
 //sign in button
 var signinbtn = document.getElementById('signinbtn');
 signinbtn.addEventListener('click', function() {
-	// alert('You have clicked')
-	// window.location.replace("profile.html")
-	// if(!validatesignin()){
-	// 	return false;
-	// }
 	var mail=document.querySelector("#LogEmail");
 	var pwd= document.getElementById("LogPassword");
 	console.log(mail.value+" "+pwd.value);;
@@ -78,10 +66,10 @@ signinbtn.addEventListener('click', function() {
 			// console.log("data",data.email); this one added
 			
 			if(data.status =="valid"){
-				// console.log("data",data);
-				var username=email.split('@')[0]
+				console.log("data",data);
 				// console.log(username)
 				window.localStorage.setItem("email",data.email)
+				window.localStorage.setItem("username",data.name)
 				window.location.replace("profile.html");
 
 				alert("successful login")
@@ -128,8 +116,8 @@ signupBtn.addEventListener('click',()=>{
                     console.log(data);
                     data = JSON.parse(data);
                     if(data.status=="valid"){
-                        localStorage.setItem("email",email)
-                        // localStorage.setItem("userName",userName);
+                        localStorage.setItem("email",email);
+                        // localStorage.setItem("name",username);
                         window.location.replace("profile.html")
                         alert("user registered successfully")
                     }else if(data.status=="exist"){
@@ -148,4 +136,6 @@ signupBtn.addEventListener('click',()=>{
     }
 
 })
+
+
 

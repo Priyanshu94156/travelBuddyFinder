@@ -27,6 +27,27 @@ const userSchema= mongoose.Schema({
         type:String,
         // required:true
     },
+    city:{
+        type:String,
+        // required:true
+    },
+    nationality:{
+        type:String,
+        // required:true
+    },
+    description:{
+        type:String,
+        // required:true
+    },
+    smoking:{
+        type:String,
+    },
+    drinking:{
+        type:String,
+    },
+    height:{
+        type:Number,
+    },
     Trips:[{
         type:Object
     }],

@@ -23,9 +23,9 @@
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
 				<form class="form-inline my-2 my-lg-0 ml-auto">
-					<a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/search.png"></a>
-					<a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/settings.png"></a>
-					<button class="btn timoo-outline-btn ml-2 my-2 my-sm-0" type="submit">Create Trip</button>
+					<!-- <a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/search.png"></a> -->
+					<!-- <a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/settings.png"></a> -->
+					<button class="btn timoo-outline-btn ml-2 my-2 my-sm-0" id="homebutton" type="submit">Home</button>
 				</form>
 			</div>
 		</nav>
@@ -50,26 +50,26 @@
 			<div class="col-sm-8 col-12 main_body mt-4">
 				<div class="row top_part ">
 					<div class="col-sm-4">
-						<img class="user_img" src="../static/images/dummy.jpg">
+						<img class="user_img" src="../static/images/bg1.jpg">
 					</div>
 					<div class="col-sm-4 text-center d-flex flex-column align-items-center justify-content-center">
 						<h3 class="username" id="user_name">hola</h3>
 						<p class="user_location" id="user_location"></p>
 						<div class="d-flex prg_holder align-items-center justify-content-center">
 							<div class="progress">
-								<div class="progress-bar" role="progressbar" id="bar" style="width: 0%"" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+								<div class="progress-bar" role="progressbar" id="bar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 							<span class="pl-2 f2" id="progresspercentage"></span>
 						</div>
 					</div>
-					<div class="col-sm-4">
+					<!-- <div class="col-sm-4">
 						<div class="other_profile  text-right">
 							<a href="" class="other_inline pt-2"><img class="psd_icn mr-2" src="../static/images/logo/fav.png">FAVORITE</a>
 						</div>
-					</div>
+					</div> -->
 				</div>
-				<div class="row bottom_part text-center bg1 py-4">
-					<p class="col-sm-6 offset-sm-3">I am a passionate traveler coming from India and currently staying in USA. 
+				<div class="row bottom_part text-center bg1 py-4" >
+					<p class="col-sm-6 offset-sm-3" id="description">I am a passionate traveler coming from India and currently staying in USA. 
 					And I really love meeting new people and making new friends.</p>
 				</div>
 
@@ -104,8 +104,8 @@
 											<div class="col-sm-3">
 												<h5 class="mb-0">Gender:</h5>
 											</div>
-											<div  id="gender"
-												contenteditable="false"> class="col-sm-6"
+											<div  id="gender" class="col-sm-6"
+												contenteditable="false"> 
 											</div>
 										</div>
 										<hr>
@@ -122,7 +122,7 @@
 											<div class="col-sm-3">
 												<h5 class="mb-0">City:</h5>
 											</div>
-											<div  id="city"
+											<div  id="city" class="col-sm-6"
 												contentEditable="false">
 											</div>
 										</div>
@@ -145,17 +145,21 @@
 											</div>
 										</div>
 										<hr>
-										<div class="row">
+										<!-- <div class="row">
 											<div class="col-sm-3">
 												<h5 class="mb-0">Religion:</h5>
 											</div>
 											<div id="religion"  class="col-sm-6"
 												contentEditable="false">
 											</div>
-										</div>
+										</div> -->
+										<br>
+										
+										<h5>Additional Information</h5>
 										<hr>
+			
 									
-										<div class="row">
+										<!-- <div class="row">
 											<div class="col-sm-3">
 												<h5 class="mb-0">Birthday:</h5>
 											</div>
@@ -163,7 +167,7 @@
 												contentEditable="false">
 											</div>
 										</div>
-										<hr>
+										<hr> -->
 										<div class="row">
 											<div class="col-sm-3">
 												<h5 class="mb-0">Smoking:</h5>
@@ -225,7 +229,7 @@
 							<div class="card">
 								<div class="card-header bg1 " >
 									<h5 class="mb-0">
-										<span class="username">Kate's</span> Trip
+										<span class="username" id="user_name1">default</span>'s Trip
 										<span class="float-right">4<span class="lfw">/12</span></span>
 									</h5>
 									<img class="icons" src="../static/images/icons/world.svg">

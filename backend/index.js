@@ -41,6 +41,7 @@ io.on('connection',socket =>{
 
 const userRoutes = require('./mvc/routes/user');
 const tripRoutes = require('./mvc/routes/trips');
+const reviewRoutes = require('./mvc/routes/reviews');
 const abcRoutes = require('./mvc/routes/abc');
 const chatRoutes = require('./mvc/routes/chats');
 const subscriptionRoutes = require('./mvc/routes/subscription')
@@ -55,7 +56,6 @@ try{
     var token = req.headers.token
     console.log("asdasdas",token);
     var validated = jwt.verify(token,secretkey)
-    console.log("ssssss",validated)
     if(validated)
         next();
     else
@@ -72,5 +72,6 @@ app.use('/trip',tripRoutes);
 app.use('/stories',storyRoutes);
 app.use('/chats',chatRoutes);
 
+app.use('/getReview',reviewRoutes)
 
 server.listen(3003);

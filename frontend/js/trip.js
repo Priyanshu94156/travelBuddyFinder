@@ -45,7 +45,7 @@ function createTrip() {
 
     let formdata = new FormData(document.querySelector("#myform"));
     formdata.set("owner", owner)
-    formdata.set("tripName",tripName)
+    formdata.set("tripName", tripName)
     formdata.set("description",description);
     formdata.set("from",from);
     formdata.set("to",to);

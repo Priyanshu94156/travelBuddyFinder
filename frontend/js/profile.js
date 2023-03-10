@@ -152,6 +152,7 @@ email:localStorage.getItem('email')
 }
 var dat=JSON.stringify(dat)
 console.log(dat)
+
 $('#trip').click(()=>{
     console.log("click",dat)
     $.ajax({
@@ -162,12 +163,31 @@ $('#trip').click(()=>{
         success:(e)=>{
             console.log(e)
             if (e=="you have a subscription"){
-                alert(e)
+                alert("You have a subscription",e)
                 window.location.replace("trip.html")
             }else if(e=="you don't have a subscription plan"){
-                alert(e)
+                alert("You don't have a subscription plan",e)
                 window.location.replace("upgrade.html")
             }
         }
     })
 })
+
+function ss(){
+        $.ajax({
+        method:"POST",
+        contentType:'application/json',
+        data:dat,
+        url:'http://localhost:3003/getReview',
+        success:(e)=>{
+            console.log(e)
+            if(e.length>0){
+            alert("plz review you journey",)
+            }
+            else{
+                console.log('sdfs')
+                alert("welcome back")
+            }
+        }
+    })
+}

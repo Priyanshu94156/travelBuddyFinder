@@ -54,10 +54,13 @@ const userSchema= mongoose.Schema({
     previousSubscriptions:[{
         type:Object
     }],
-    trips:[{
-        type:Object
-    }],
-    visitedUsers:[]
+    trips:[
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'tripDetails'
+        }],
+    visitedUsers:[],
+    reviews:[]
 })
  let userModel=mongoose.model('users',userSchema,'users');
 module.exports={userModel};

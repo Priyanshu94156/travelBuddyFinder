@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
 	new fullpage('#fullpage', {
 		menu: '#menu',
@@ -140,3 +142,15 @@ signupBtn.addEventListener('click',()=>{
 
 
 
+if(localStorage.getItem("email")){
+	console.log("email found")
+	$.ajaxSetup({
+		beforeSend: function(xhr){
+			xhr.setRequestHeader('token', localStorage.getItem('token'));
+		}
+	});
+	$("#loginn").html(`<a href='profile.html'>${localStorage.getItem("email")}</a><br><button id="hola" >Log Out</button>`)
+}
+
+
+$('#hola').click(window.localStorage.clear)

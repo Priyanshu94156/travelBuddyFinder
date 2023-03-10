@@ -5,7 +5,8 @@ const user = require('../../models/userModel').userModel;
 
 function addTrips(req, res){
     pics=[]
-   
+   console.log(req.body)
+   console.log(req.body.endDate)
     console.log("length",req.files.length)
     for (let i=0; i<req.files.length; i++){
         pics.push(req.files[i].location)
@@ -26,13 +27,22 @@ function addTrips(req, res){
         photos:pics
         // File:req.file.location
     })
-    console.log("showing addTrip",addTripData)   
     addTripData.save((err,result)=>{
         if(err){
             console.log("error",err)
             res.send(err)
         }else{
+            console.log(result._id)
             console.log("added")
+            console.log(result)
+            user.updateOne({email:result.owner},{$push:{trips:result._id}},(err, res)=>{
+                if(err){
+                    console.log(err)
+                    res.send(err)
+                }else{
+                    console.log("done")
+                }
+            })
         }
     })
     // console.log(req.body.)

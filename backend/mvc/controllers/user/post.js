@@ -61,14 +61,16 @@ async function getSubscription(req, res) {
             res.send('error') 
 
         }else{
-            console.log(data.currentSubscription)
+            console.log("back",data)
             if(data.currentSubscription>=0 || data.currentSubscription==null){
+                data.currentSubscription=data.currentSubscription ?? 0;
                 currentSubscription=data.currentSubscription+req.body.currentSubscription
+                console.log("curr",currentSubscription)
                 user.updateOne({email:req.body.email},{$set:{currentSubscription:currentSubscription},$push:{previousSubscriptions:req.body.currentSubscription}},(err,data)=>{
                     if(err){
                         res.send(err) 
                     }else{
-                        console.log(data)
+                        console.log("hiiii",data)
                         res.send("you have successfully Subscribed")
                     }
                 })

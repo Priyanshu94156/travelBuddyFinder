@@ -74,10 +74,10 @@
 										<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="toDate">
 									</div>
 								</div>
-								<div class="mb-1 genderRadio">
-									<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" id="search_female">Female</button>
-									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" id="search_male">Male</button>
-									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" id="search_both">Any</button>
+								<div class="mb-1 genderRadio" >
+									<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')">Female</button>
+									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" >Male</button>
+									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" >Any</button>
 								</div>
 								<!-- <input type="text" name="nop" class="form-control customInp" placeholder="Number of persons"> -->
 
@@ -335,9 +335,11 @@
 									<br>
 									<br>
 									<br>
-									<p class="f5 px-3">About 5 results</p>
+									<p class="f5 px-3" id="header"><span></span></p>
 									<div class="search_results row px-4 secScrollArea">
-										<div class="trip_card date row">
+										<div class="container" id="container">
+											
+										<!-- <div class="trip_card date row">
 											<div class="col-sm-3 pr-0">
 												<img src="../static/images/bg1.jpg" class="img-fluid">
 											</div>
@@ -353,8 +355,10 @@
 													<span>We'll split 50-50</span>
 												</div>
 											</div>
-										</div>
-										<div class="trip_card friends row">
+										</div> -->
+
+									</div>
+										<!-- <div class="trip_card friends row">
 											<div class="col-sm-3 pr-0">
 												<img src="../static/images/bg1.jpg" class="img-fluid">
 											</div>
@@ -433,7 +437,7 @@
 													<span>Female</span>
 												</div>
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
 
@@ -481,7 +485,7 @@ crossorigin="anonymous"></script>
 			range: true,
 			min: 18,
 			max: 75,
-			values: [ 24, 50 ],
+			values: [ 18, 75 ],
 			slide: function( event, ui ) {
 				$( ".ageVal" ).html(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
 			}
@@ -509,10 +513,7 @@ crossorigin="anonymous"></script>
 		})
 
 	} );
-	function toggleSel(curr,el,parent)
-	{
-		$(parent).find(el).removeClass('selected');
-		curr.addClass('selected')
-	}
+	
 </script>
+<script src="../js/search.js"></script>
 </html>

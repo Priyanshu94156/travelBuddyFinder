@@ -10,6 +10,7 @@ const getTripDetails = async(req,res)=>{
     if(to){
         queryObject.to={$regex:to, $options:"i"};
     }
+
     if(startDate){
         queryObject.startDate={$gte:startDate};
     }
@@ -17,7 +18,12 @@ const getTripDetails = async(req,res)=>{
         queryObject.endDate={$lte:endDate};
     }
     if(preferences){
-        queryObject.preferences={$regex:preferences, $options:"i"};
+        // console.log(preferences);
+        if(preferences=="Any"){
+            queryObject.preferences={$regex:"male", $options:"i"};
+        }else{
+        queryObject.preferences=preferences;
+        }
     }
     console.log(queryObject)
 

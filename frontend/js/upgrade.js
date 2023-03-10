@@ -27,7 +27,8 @@ $("#silver").click(()=>{
             console.log(e)
             if(e == "token not found") alert("token not found")
             else
-            alert("you are subscribed to gold edition")
+            alert("you are subscribed to silver edition")
+            window.location.replace("trip.html")
         },
         error:(e)=>{
             alert(e)
@@ -55,6 +56,7 @@ $("#gold").click(()=>{
             if(e == "token not found") alert("token not found")
             else
             alert("you are subscribed to gold edition")
+            window.location.replace("trip.html")
         },
         error:(e)=>{
             alert(e)
@@ -81,7 +83,8 @@ $("#platinum").click(()=>{
             console.log(e)
             if(e == "token not found") alert("token not found")
             else
-            alert("you are subscribed to gold edition")
+            alert("you are subscribed to platinum edition")
+            window.location.replace("trip.html")
         },
         error:(e)=>{
             alert(e)

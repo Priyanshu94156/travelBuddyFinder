@@ -10,6 +10,7 @@ routes.get('/fetchUser/:email',userDetails.fetchUser)
 routes.post('/validate',validate.validate)
 routes.post('/addUser',addUser.addUser)
 routes.post('/userUpdate/:email',userUpdate.updateUser)
-
+routes.post('/reqPush',addUser.reqPush)
+routes.post('/getVisitors',addUser.getVisitors)
 
 module.exports = routes;    

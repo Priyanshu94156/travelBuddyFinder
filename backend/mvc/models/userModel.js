@@ -57,6 +57,7 @@ const userSchema= mongoose.Schema({
     trips:[{
         type:Object
     }],
+    visitedUsers:[]
 })
  let userModel=mongoose.model('users',userSchema,'users');
 module.exports={userModel};

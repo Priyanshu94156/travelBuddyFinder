@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/custom.css">
 	<link rel="stylesheet" href="../css/message.css">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -54,24 +55,24 @@
 							<h5>All Conversations</h5>
 							<a href="#" class="pr-3 convoSearch"><img class="nav_icon" src="../static/images/logo/search.png"></a>
 						</header>
-						<div class="scrollArea">
+						<div class="scrollArea" id="messages">
 							<!-- to be cloned -->
-							<div class="date mesListCard read selected ">
+							<div class="date mesListCard read selected " >
 								<div class="trip_location text-ellipsis">
 									<span class="tl">London</span>
 									<span class="trip_color"> > </span>
 									<span class="tl">Paris</span>
 									<span class="trip_color"> ! </span>
 								</div>
-								<div class="trip_users text-ellipsis">
+								<!-- <div class="trip_users text-ellipsis">
 									<span class="tu">Alex Hudson</span>
 									<span class="tu">Mary Hudson</span>
 									<span class="tu">Kate Hudson</span>
 									<span class="tu">Michael Hudson</span>
-								</div>
+								</div> -->
 								<span class="mesListIcon"></span>
 							</div>
-							<div class="date mesListCard read">
+							<!-- <div class="date mesListCard read">
 								<div class="trip_location text-ellipsis">
 									<span class="tl">London</span>
 									<span class="trip_color"> > </span>
@@ -190,12 +191,12 @@
 									<span class="tu">Michael Hudson</span>
 								</div>
 								<span class="mesListIcon"></span>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<!-- message box -->
 					<div class="col-sm-8 rightContentArea date">
-						<header>
+						<header id="head">
 							<div class="trip_location text-ellipsis">
 								<span class="tl">London</span>
 								<span class="trip_color"> > </span>
@@ -217,8 +218,9 @@
 								</div>
 							</div>
 						</header>
-						<div class="scrollArea">
-							<div class="secScrollArea">
+						<div class="scrollArea" >
+							<form action="" id="chats" >
+							<div class="secScrollArea" id="messageArea">
 								<!-- left card -->
 								<div class="leftCard">
 									<div class="userImg"><img class="" src="../static/images/dummy.jpg"></div>
@@ -302,11 +304,12 @@
 								</div>
 							</div>
 							<div class="msgReplyBox">
-								<textarea rows="2" class="msgReply"></textarea>
-								<button class="btn sendBtn">Send
+								<textarea rows="2" class="msgReply" id="msg"></textarea>
+								<button class="btn sendBtn" id="send">Send
 									<object data="../static/images/icons/paper-plane.svg" type="image/svg+xml" class="w15 ml-1"></object></button>
 							</div>
-						</div>
+						</form>
+						</div >
 					</div>
 
 					<!-- message box -->
@@ -409,7 +412,9 @@
 			</div>
 		</footer>
 	</div>
-
+<!-- <script src='http://localhost:3003/node_modules/socket.io/lib/socket.io.js'></script> -->
+<script src="http://localhost:3003/socket.io/socket.io.js"></script>
+<script src="../js/message.js"></script>
 </body>
 <script
 src="https://code.jquery.com/jquery-3.3.1.min.js"

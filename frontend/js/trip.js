@@ -45,11 +45,12 @@ function createTrip() {
 
     let formdata = new FormData(document.querySelector("#myform"));
     formdata.set("owner", owner)
+    formdata.set("tripName", tripName)
     formdata.set("description",description);
     formdata.set("from",from);
     formdata.set("to",to);
     formdata.set("startDate",startDate);
-    formdata.set("endData",endDate);
+    formdata.set("endDate",endDate);
     formdata.set("flexible",flexible);
     formdata.set("preferences",preferences);
     // formdata.set("keywords",keywords);

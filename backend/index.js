@@ -5,6 +5,7 @@ const secretkey = "Priyanshu"
 const app = express();
 const userRoutes = require('./mvc/routes/user');
 const tripRoutes = require('./mvc/routes/trips');
+const reviewRoutes = require('./mvc/routes/reviews');
 const abcRoutes = require('./mvc/routes/abc');
 const subscriptionRoutes = require('./mvc/routes/subscription')
 const storyRoutes = require('./mvc/routes/stories');
@@ -18,7 +19,6 @@ try{
     var token = req.headers.token
     console.log("asdasdas",token);
     var validated = jwt.verify(token,secretkey)
-    console.log("ssssss",validated)
     if(validated)
         next();
     else
@@ -33,5 +33,6 @@ app.use('/subscribe',subscriptionRoutes)
 app.use('/abc', abcRoutes);
 app.use('/trip',tripRoutes);
 app.use('/stories',storyRoutes)
+app.use('/getReview',reviewRoutes)
 
 app.listen(3003);

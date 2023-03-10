@@ -37,6 +37,20 @@ function getUserDetails(){
         drinking.html(data[0].drinking)
         description.html(data[0].description)
         // birthday.html(data[0].birthday)
-        barDisplay();
+        for(var i=0; i<data[0].reviews.length; i++){
+        document.querySelector('#yoyo').innerHTML+= `<div class="trip_card date row">
+        <div class="col-sm-3 pr-0">
+            <img src="../static/images/bg1.jpg" class="img-fluid">
+        </div>
+        <div class="col-sm-9">
+            <div class="trip_location">
+                <span class="tl">${data[0].reviews[i].tripName}</span>
+            </div>
+            <div class="trip_date">Review by ${data[0].reviews[i].senderEmail}</div>
+            <div class="trip_type"><span class="trip_color">${data[0].reviews[i].review}</span> 
+            </div>
+        </div>
+    </div>`
+        }
     })
 }

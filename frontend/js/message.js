@@ -113,15 +113,15 @@ function ShowUsers(data){
         <span class="trip_color"></span>
     </div>`
 }
-const targ = document.getElementById('#messages')
-targ.addEventListener('click',(e)=>{
-    if(e.target.nodeName=='A' && e.target.name==mess){
-        owner=e.target.id
-        console.log(owner)
-        window.location.href='message.html#'+owner
-        window.location.reload()
-    }
-})
+// const targ = document.getElementById('#messages')
+// targ.addEventListener('click',(e)=>{
+//     if(e.target.nodeName=='A' && e.target.name==mess){
+//         owner=e.target.id
+//         console.log(owner)
+//         window.location.href='message.html#'+owner
+//         window.location.reload()
+//     }
+// })
 }
 
 

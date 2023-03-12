@@ -140,3 +140,12 @@ signupBtn.addEventListener('click',()=>{
 
 
 
+if(localStorage.getItem("email")){
+	console.log("email found")
+	$.ajaxSetup({
+		beforeSend: function(xhr){
+			xhr.setRequestHeader('token', localStorage.getItem('token'));
+		}
+	});
+	$("#loginn").html(`<a href='profile.html'>${localStorage.getItem("email")}</a><br><button id="hola" onclick=localStorage.clear(),location.reload() >Log Out</button>`)
+}

@@ -1,3 +1,5 @@
+const { array } = require('../../middleware/upload');
+
 const user = require('../../models/userModel').userModel;
 
 function addUser(req,res){
@@ -59,14 +61,16 @@ async function getSubscription(req, res) {
             res.send('error') 
 
         }else{
-            console.log(data.currentSubscription)
+            console.log("back",data)
             if(data.currentSubscription>=0 || data.currentSubscription==null){
+                data.currentSubscription=data.currentSubscription ?? 0;
                 currentSubscription=data.currentSubscription+req.body.currentSubscription
+                console.log("curr",currentSubscription)
                 user.updateOne({email:req.body.email},{$set:{currentSubscription:currentSubscription},$push:{previousSubscriptions:req.body.currentSubscription}},(err,data)=>{
                     if(err){
                         res.send(err) 
                     }else{
-                        console.log(data)
+                        console.log("hiiii",data)
                         res.send("you have successfully Subscribed")
                     }
                 })
@@ -78,4 +82,91 @@ async function getSubscription(req, res) {
     })
 }
 
-module.exports = {addUser,getSubscription,subscribeValidation}
+function reqPush(req,res){
+    console.log(req.body)
+    user.findOne({email:req.body.email},(err,data)=>{
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            console.log(data)
+            if(data.visitedUsers.length==0 || data.visitedUsers.length==null){
+                 user.updateOne({email:req.body.email},{$push:{visitedUsers:req.body.reqEmail}},(data,err)=>{
+                    if(err){
+                        res.send(err)
+                    }else{
+                        console.log("added")
+                    }
+                 })
+
+            }else{
+            flag=0
+            for(i=0;i<data.visitedUsers.length;i++){
+                if(req.body.reqEmail==data.visitedUsers[i]){
+                    console.log("already have you")
+                    flag=1
+                    break
+                }
+            }
+            if(flag==0){
+                user.updateOne({email:req.body.email},{$push:{visitedUsers:req.body.reqEmail}},(data,err)=>{
+                    if(err){
+                        res.send(err)
+                    }else{
+                        res.send("added")
+                    }
+                })
+
+            }}
+        }
+    })
+    user.findOne({email:req.body.reqEmail},(err,data)=>{
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            console.log(data)
+            if(data.visitedUsers.length==0 || data.visitedUsers.length==null){
+                 user.updateOne({email:req.body.reqEmail},{$push:{visitedUsers:req.body.email}},(data,err)=>{
+                    if(err){
+                        res.send(err)
+                    }else{
+                        res.send("added")
+                    }
+                 })
+                 
+            }else{
+            flag=0
+            for(i=0;i<data.visitedUsers.length;i++){
+                if(req.body.email==data.visitedUsers[i]){
+                    res.send("already have you")
+                    flag=1
+                    break
+                }
+            }
+            if(flag==0){
+                user.updateOne({email:req.body.reqEmail},{$push:{visitedUsers:req.body.email}},(data,err)=>{
+                    if(err){
+                        res.send(err)
+                    }else{
+                        res.send("added")
+                    }
+                })
+
+            }}
+        }
+    })
+}
+
+function getVisitors(req,res){
+    console.log(req.body)
+    user.findOne({email:req.body.email},(err,data)=>{
+        if(err){
+            res.send(err)
+        }else{
+            res.send(data.visitedUsers)
+        }
+    })
+}
+
+module.exports = {addUser,getSubscription,subscribeValidation,reqPush , getVisitors}

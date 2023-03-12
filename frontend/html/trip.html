@@ -43,7 +43,7 @@
 					<div class="vr_line"></div>
 					<ul class="list-group">
 						<li class="list-group-item"><a href="profile.html">My Profile</a></li>
-					<li class="list-group-item"><a href="trip.html">Trips</a></li>
+					<li class="list-group-item"><a href="dashboard.html">All Trips</a></li>
 					<li class="list-group-item"><a href="#">Favorites</a></li>
 					<li class="list-group-item"><a href="message.html">Messages</a></li>
 					</ul>
@@ -53,18 +53,18 @@
 			<!-- main -->
 			<div class="col-lg-8 col-sm-9 col-12 main_body mt-4 bg1 p-2">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<header>
 							<h5>All Trips</h5>
 						</header>
 						<div class="scrollArea p-3">
-							<button class="btn w-100 text-uppercase theme2-btn f4 mb-2">+ Add new trip</button>
+							<!-- <button class="btn w-100 text-uppercase theme2-btn f4 mb-2">+ Add new trip</button> -->
 							<div class="search_results">
 								<div class="trip_card mx-0  date row">
 									<div class="col-sm-4 pr-0 pl-0">
-										<img src="../static/images/bg1.jpg" class="img-fluid">
+										<!-- <img src="../static/images/bg1.jpg" class="img-fluid"> -->
 									</div>
-									<div class="col-sm-8">
+									<!-- <div class="col-sm-8">
 										<div class="trip_location">
 											<span class="tl">London</span>
 											<span class="trip_color"> > </span>
@@ -75,7 +75,7 @@
 										<div class="trip_type"><span class="trip_color">Date Trip</span> 
 											<span>We'll split 50-50</span>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<!-- <div class="trip_card mx-0  friends row">
 									<div class="col-sm-4 pr-0 pl-0">
@@ -162,9 +162,9 @@
 					</div>
 
 					<!-- message box -->
-					<div class="col-sm-8 rightContentArea unscrollMain">
+					<div class="col-sm-9 rightContentArea unscrollMain">
 						<header class="d-flex align-items-center">
-							<h6 class="m-0">< Back</h6>
+							<h6 class="m-0"></h6>
 							<h5 class="mx-auto">Create Trip</h5>
 
 						</header>
@@ -181,8 +181,8 @@
 							<div class="tab-content secScrollArea" id="myTabContent" >
 									<div class="tab-pane fade show active px-3 " id="travelFriend" role="tabpanel" aria-labelledby="travelFriend-tab">
 										<form onsubmit="return false" class="pb-2" name="myform" id="myform" enctype="multipart/form-data">
-											<input type="text" name="tripname" id="tripName" placeholder="Trip Name" class="form-control customInp">
-											<input type="text" name="Description" id="description" placeholder="Description" class="form-control customInp">
+											<input type="text" name="tripName" id="tripName" placeholder="Trip Name" class="form-control customInp">
+											<input type="text" name="description" id="description" placeholder="Description" class="form-control customInp">
 											<div class="row">
 												<div class="col"><input type="text" name="fromcity" id="from" placeholder="From City, Country" class="form-control customInp"></div>
 												<div class="col"><input type="text" name="tocity" id="to" placeholder="To City, Country" class="form-control customInp"></div>
@@ -191,7 +191,7 @@
 												<h6 class="col-12">Trip Dates</h6>
 												<div class="col-6">
 													<label for="fromDate" class="col-form-label customLabel">Start Date</label>
-													<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="startDate">
+													<input class="customInp form-control" type="date" id="startDate">
 												</div>
 												<div class="col-6">
 													<label for="toDate" class="col-form-label customLabel">End Date</label>

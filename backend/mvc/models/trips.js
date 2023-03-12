@@ -38,9 +38,15 @@ const tripSchema = mongoose.Schema({
     photos:{
         type: Array
     },
-    gender:{
-        type: String
-    }
+    members:[],
+    requestedMembers:[],
+    messages_info:[
+        {
+            message:String,
+            email:String
+        }
+    ],
+    blackList:[]
 })
 
 

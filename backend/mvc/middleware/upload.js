@@ -22,6 +22,7 @@ dotenv.config()
 // const upload = multer({
 //     storage:storage
 // })
+console.log("upoad", process.env.AWS_ACCESS_KEY_ID)
 
 let s3 = new S3Client({
     region: process.env.AWS_REGION,

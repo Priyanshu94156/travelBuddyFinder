@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WanderBuddy</title>
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<!-- <link rel="icon" type="image/png" href="imgs/favicon.png"> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,700">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css">
+	<link rel="stylesheet" href="../static/libs/fullpage/fullpage.min.css">
+	<link rel="stylesheet" href="../static/custom.css">
+	<link rel="stylesheet" href="../css/homepage.css">
+	
+</head>
+<body>
+	<div class="menu home_menu">
+		<div class="vr_line"></div>
+		<ul class="menu-list" id="menu">
+			<li class="menu-item" data-menuanchor="fphome"><a href="#home" class="menu-link">Home</a></li>
+			<li class="menu-item" data-menuanchor="fphowitworks"><a href="#howitworks" class="menu-link">How it works</a></li>
+			<li class="menu-item" data-menuanchor="fptimooapp"><a href="#timooapp" class="menu-link">Timoo app</a></li>
+			<li class="menu-item" data-menuanchor="fpstories"><a href="#stories" class="menu-link">Stories</a></li>
+			<li class="menu-item" data-menuanchor="fpfaq"><a href="#faq" class="menu-link">FAQ</a></li>
+			<li class="menu-item" data-menuanchor="fpregister"><a href="#register" class="menu-link">Register</a></li>
+		</ul>
+		<div class="vr_line"></div>
+	</div>	
+		<nav class="home_nav" id="loginn">
+			<div class="pr text-left">
+				<button class="button button-clear f2 c4 login" onclick="$(this).next().removeClass('hidden')" id="login">Login</button>
+				<div class="login_holder hidden">
+					<a href="javascript:void(0)" class="close" onclick="$(this).parent().addClass('hidden')"><img src="../static/images/close.svg"></a>
+					<!-- <form> -->
+						<fieldset>
+							<label for="LogEmail">Email</label>
+							<input type="text" id="LogEmail">
+							<label for="LogPassword">Password</label>
+							<input type="password" id="LogPassword">
+							<!-- <a href="#">Forgot password?</a><br> -->
+							<div class="text-center">
+								<button class="c1_button login_btn" id="signinbtn" type="submit">Sign In</button>
+								<div class="log_social_holder ">
+									<button class="social_login social-facebook">
+										<div><img src="../static/images/facebook-logo.svg"></div>
+										<div>Sign-up with Facebook</div>
+									</button><br><br>
+									<button class="social_login social-google" id="googlebtn">
+										<div><img src="../static/images/google-logo.svg"></div>
+										<div>Sign-up with Google</div>
+									</button>
+								</div>
+							</div>
+						</fieldset>
+
+
+					<!-- </form> -->
+				</div>
+			</div>
+			<a href="#" class="button button-outline c4 f2" onclick="fullpage_api.moveTo('fpregister', 1);">Signup</a>
+		</nav>
+	<div class="main_container" id="fullpage">
+
+		<section id="home" class="page-section section" data-anchor="home">
+			<div class="home_int text-center">
+				<img src="../static/images/logo.png">
+				<hr>
+				<p>Timoo is specially tailored for the wanderlust members who are seeking 
+					to find a travel buddy. It is the most relevant platform that allows the members
+				to connect with each other.</p>
+				<button class="c2_button"onclick="fullpage_api.moveTo('fphowitworks', 1);">GET STARTED</button>
+
+			</div>
+		</section>
+		<section id="howitworks" class="page-section section" data-anchor="fphowitworks">
+			<div class="home_int text-center">
+				<h3>HOW IT WORKS</h3>
+				<hr>
+				<div class="row howitwork">
+					<div class="column">
+						<img src="../static/images/join.png">
+						<div class="c2 icon_text">Join</div>
+					</div>
+					<div class="column">
+						<img src="../static/images/connect.png">
+						<div class="c2 icon_text">Connect</div>
+					</div>
+					<div class="column">
+						<img src="../static/images/travel.png">
+						<div class="c2 icon_text">Travel</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<section id="timooapp" class="page-section section" data-anchor="fptimooapp">
+			<div class="clearfix"></div>
+			<div class="normal_int">
+				<div class="row">
+					<div class="column column-33 col-xs-full">
+						<img src="../static/images/timooapp.png">
+					</div>
+					<div class="column column-67 col-xs-full">
+						<h3><span class="c2">INSTALL</span> THE TIMOO APP</h3>
+						<hr class="margin-left col-xs-center">
+						<p>
+							Timoo is an online platform which aims in finding the travel companion. 
+							There are two different category of trip you can create Date Trip 
+							or Friend Trip. <br><Br>
+
+							If you are bored with normal dating then why don't you travel to some unexplored destination 
+							with the person who has the right chemistry with you. Date trips takes you to the new experience 
+							of the travel dating. If you are just a solo traveler and you want to meet some other companion 
+							or groups then you can join them, what a way of making new Friends in the journey that you guys 
+							haven't explored. It is rightly said, Friends who travel together stays together.
+						</p>
+						<div class="download_btn">
+							<a href="#" ><img src="../static/images/google-play-badge.png" style="width:10em"></a>
+							<a href="#"><img src="../static/images/appstore.svg" style="width: 9em"></a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</section>
+		<section id="stories" class="page-section section" data-anchor="fpstories">
+			<div class="clearfix"></div>
+			<div class="normal_int">
+				<div class="row">
+					<div class="column ">
+						<h3 class="text-center">STORIES</h3>
+						<hr>
+						<div class="slideshow" id="slideshow">
+							<ul>
+								<li class="active">
+									<div class="slide_card row"id="slide_card" >
+										<div class="column column-20 text-center col-xs-full"><img class="review_img" src="../static/images/dummy.jpg"></div>
+										<div class="column column-80 col-xs-full">
+											<h3 class="c2">Kate Hudson</h3>
+											<div class="f2">Los Angeles, California, United States<br><br></div>
+											<div class="fw500 review_desc">Timoo has presented me with so many unique opportunities. I’ve experienced different cultures and have made amazing connections with people all around the world. Timoo has been the most influential website in my life!</div>
+										</div>
+										<img src="../static/images/like.png" class="like_btn">
+
+									</div>
+								</li>
+								<li class="">
+									<div class="slide_card row">
+										<div class="column column-20 text-center col-xs-full"><img class="review_img" src="../static/images/dummy.jpg"></div>
+										<div class="column column-80 col-xs-full">
+											<h3 class="c2">Kate Hudson1</h3>
+											<div class="f2">Los Angeles, California, United States<br><br></div>
+											<div class="fw500 review_desc">Timoo has presented me with so many unique opportunities. I’ve experienced different cultures and have made amazing connections with people all around the world. Timoo has been the most influential website in my life!</div>
+										</div>
+										<img src="../static/images/like.png" class="like_btn">
+
+									</div>
+								</li>
+								<li class="">
+									<div class="slide_card row">
+										<div class="column column-20 text-center col-xs-full"><img class="review_img" src="../static/images/dummy.jpg"></div>
+										<div class="column column-80 col-xs-full">
+											<h3 class="c2">Kate Hudson2</h3>
+											<div class="f2">Los Angeles, California, United States<br><br></div>
+											<div class="fw500 review_desc">Timoo has presented me with so many unique opportunities. I’ve experienced different cultures and have made amazing connections with people all around the world. Timoo has been the most influential website in my life!</div>
+										</div>
+										<img src="../static/images/like.png" class="like_btn">
+
+									</div>
+								</li>
+
+							</ul>
+							<div class="slideshow_side">
+								<span class="left">
+									<?xml version="1.0" encoding="UTF-8"?>
+									<svg enable-background="new 0 0 32.635 32.635" version="1.1" viewBox="0 0 32.635 32.635" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px">
+										<path d="m32.135 16.817h-31.635c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h31.635c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5z"/>
+										<path d="m19.598 29.353c-0.128 0-0.256-0.049-0.354-0.146-0.195-0.195-0.195-0.512 0-0.707l12.184-12.184-12.184-12.18c-0.195-0.195-0.195-0.512 0-0.707s0.512-0.195 0.707 0l12.537 12.533c0.094 0.094 0.146 0.221 0.146 0.354s-0.053 0.26-0.146 0.354l-12.537 12.536c-0.097 0.098-0.225 0.147-0.353 0.147z"/>
+									</svg>
+									PREVIOUS
+								</span>
+								<span class="right">
+									NEXT
+									<?xml version="1.0" encoding="UTF-8"?>
+									<svg enable-background="new 0 0 32.635 32.635" version="1.1" viewBox="0 0 32.635 32.635" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px">
+										<path d="m32.135 16.817h-31.635c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h31.635c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5z"/>
+										<path d="m19.598 29.353c-0.128 0-0.256-0.049-0.354-0.146-0.195-0.195-0.195-0.512 0-0.707l12.184-12.184-12.184-12.18c-0.195-0.195-0.195-0.512 0-0.707s0.512-0.195 0.707 0l12.537 12.533c0.094 0.094 0.146 0.221 0.146 0.354s-0.053 0.26-0.146 0.354l-12.537 12.536c-0.097 0.098-0.225 0.147-0.353 0.147z"/>
+									</svg>
+								</span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</section>
+		<section id="faq" class="page-section section" data-anchor="fpfaq">
+			<div class="clearfix"></div>
+			<div class="home_int ">
+				<h3 class="text-center">FREUENTLY ASKED QUESTION</h3>
+				<hr>
+				<div class="row faq_container">
+					<div class="column text-left">
+						<div id="accordion">
+							<div class="accordion-toggle active">
+								<span class="column column-90 no_gutter">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</span>
+							</div>
+							<div class="accordion-content default">
+								<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</div>
+							</div>
+							<div class="accordion-toggle">
+								<span class="column column-90 no_gutter">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</span>
+							</div>
+							<div class="accordion-content">
+								<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
+							</div>
+							<div class="accordion-toggle">
+								<span class="column column-90 no_gutter">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</span>
+							</div>
+							<div class="accordion-content">
+								<div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</section>
+		<section id="register" class="page-section section" data-anchor="fpregister">
+			<div class="clearfix"></div>
+			<div class="home_int ">
+				<h3 class="text-center"><span class="c2">REGISTER NOW</span> TO START USING TIMOO</h3>
+				<hr>
+				<div class="row justify-center">
+					<form>
+						<fieldset>
+							<input type="text" placeholder="Name" id="name">
+							<input type="email" placeholder="Email" id="email">
+							<input type="password" placeholder="Password" id="password">
+							<input type="password" placeholder="Confirm Password" id="confirm_password">
+							<div class="row ">
+								<div class="column">
+									<select id="gender" >
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+										<option value="third">Prefer not to say</option>
+									</select>
+								</div>
+								<div class="column">
+									<input type="text" placeholder="Age" id="age" >
+								</div>
+								<div class="column">
+									<label for="fromDate" class="col-form-label customLabel">Date of Birth</label>
+									<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="startDate">
+								</div>
+								
+							</div>
+							
+							<input type="text" placeholder="Phone Number" id="phno">
+							<!-- <input type="text" placeholder="Referral Code" id="referral2"> -->
+
+							<!-- <div class="register_chck">
+								<input type="checkbox" id="confirmField">
+								<div class="label-inline c3 f2" for="confirmField">I have read and agreed to the terms and conditions</div>
+							</div> -->
+							<div class="text-center pt-2">
+								<button class="c1_button" id="signupBtn" type="submit">SIGN UP</button>
+							</div>
+						</fieldset>
+						<!-- <div class="text-center">Already have a Timoo account? <a href="">Sign In</a></div> -->
+						<div class="social_holder">
+							<!-- <button class="social_login social-facebook" id="facebookbtn">
+								<div><img src="../static/images/facebook-logo.svg"></div>
+								<div>Sign-up with Facebook</div>
+							</button> -->
+							<!-- <button class="social_login social-google" id="googlebtn">
+								<div><img src="../static/images/google-logo.svg"></div>
+								<div>Sign-up with Google</div>
+							</button> -->
+						</div>
+					</form>
+				</div>
+			</div>
+			<footer>
+				<div class="normal_int ">
+					<div class="row f2 fw500">
+						<!-- <div class="d-flex ">
+							<div class="column col-xs-30">About Us</div>
+							<div class="column col-xs-30">Guidelines</div>
+							<div class="column col-xs-30">Blog</div>
+						</div> -->
+						<!-- <div class="d-flex ">
+							<div class="column col-xs-30">Terms</div>
+							<div class="column col-xs-30">Privacy</div>
+							<div class="column col-xs-30">GDPR</div>
+						</div> -->
+						<div class="column ">© 2023 Timoo All Rights Reserved</div>
+						<!-- <div class="column follow_icon c2 ">FOLLOW US!
+							<img src="../static/images/facebook.svg">
+							<img src="../static/images/twitter.svg">
+							<img src="../static/images/youtube.svg">
+							<img src="../static/images/instagram.svg">
+						</div> -->
+					</div>
+				</div>
+			</footer>
+		</section>
+
+	</div>
+
+</body>
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="../static/libs/fullpage/fullpage.min.js"></script>
+<script src="../js/homepage.js"></script>
+<script src="../static/libs/Carousel.js"></script>
+
+
+
+</html>

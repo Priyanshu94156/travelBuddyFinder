@@ -1,4 +1,3 @@
-// import { application, json } from 'express';
 import getUrl from './url.js'
 const url = getUrl()
 console.log(url)
@@ -244,3 +243,22 @@ $('#trip').click(()=>{
         }
     })
 })
+
+function ss(){
+        $.ajax({
+        method:"POST",
+        contentType:'application/json',
+        data:dat,
+        url:'http://localhost:3003/getReview',
+        success:(e)=>{
+            console.log(e)
+            if(e.length>0){
+            alert("plz review you journey",)
+            }
+            else{
+                console.log('sdfs')
+                alert("welcome back")
+            }
+        }
+    })
+}

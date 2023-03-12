@@ -31,4 +31,13 @@ function getAllStory(req, res){
     })
 }
 
-module.exports = {createStory, getAllStory}
+
+function getSingleStory(req, res){
+    console.log("sds")
+    storyCtrl.storyModel.find({_id:req.body._id}, (err,data) =>{
+        if(err) res.send(err)
+        else res.send(data)
+    })
+}
+
+module.exports = {createStory, getAllStory, getSingleStory}

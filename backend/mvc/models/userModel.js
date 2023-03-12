@@ -2,10 +2,6 @@ const db= require('./connection').db;
 const mongoose= require('./connection').mongoose;
 
 const userSchema= mongoose.Schema({
-    // img:{
-    //     type:String,
-    //     // required:true
-    // },
     name:{
         type:String,
         // required:true
@@ -58,9 +54,15 @@ const userSchema= mongoose.Schema({
     previousSubscriptions:[{
         type:Object
     }],
-    trips:[{
-        type:Object
-    }],
+    trips:[
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'tripDetails'
+        }],
+    blackedTrips:[],
+    visitedUsers:[],
+    reviews:[],
+    tripTime:[]
 })
  let userModel=mongoose.model('users',userSchema,'users');
 module.exports={userModel};

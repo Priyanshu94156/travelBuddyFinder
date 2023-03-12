@@ -1,6 +1,6 @@
 import getUrl from './url.js'
-const url = getUrl()
-console.log(url)
+const urls = getUrl()
+console.log(urls)
 const chat = document.getElementById('chats')
 const msgArea = document.querySelector('#messageArea')
 let owner=window.location.hash.split('#')[1]
@@ -38,7 +38,7 @@ let data={
         method:"POST",
         contentType:"application/json",
         data:JSON.stringify(value),
-        url:"http://localhost:3003/chats/getChats",
+        url:urls+"/chats/getChats",
         success:(e)=>{
             console.log("thissssss",e)
             showHead(e)
@@ -52,7 +52,7 @@ let data={
     
 }
 // getUserChats()
-const socket = io('http://localhost:3003');
+const socket = io(urls);
 
 
 var obj = {
@@ -91,7 +91,7 @@ chat.addEventListener('submit',e=>{
         method:"POST",
         contentType:"application/json",
         data:msgD,
-        url:"http://localhost:3003/chats/pushMessage",
+        url:urls+"/chats/pushMessage",
         success:(e) =>{
             console.log(e)
             console.log(msgD)

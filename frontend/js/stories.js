@@ -29,10 +29,45 @@ function getStories(){
                 </div>
             </div>
             <div class="col-sm-3 ">
-                <button class="btn btn primary" style="margin: 30px;">Images</button>
+                <button class="btn btn primary" id=${data[i]._id} style="margin: 30px;">More</button>
             </div>
         </div>
         `)
         }
+        const list = document.getElementById('displayTrips')
+        list.addEventListener('click', (e) =>{
+          if(e.target.nodeName == "BUTTON"){
+            stories = e.target.id
+            console.log(stories)
+            data = {
+                _id:stories
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader('token', localStorage.getItem('token'));
+                }
+            });
+            $.ajax({
+                method:"POST",
+                contentType:"application/json",
+                data:JSON.stringify(data),
+                url:"http://localhost:3003/stories/getSingleStory",
+                success:(e)=>{
+                    console.log(e)
+                    document.querySelector(".bodyy").innerHTML =`<div class="card">
+                    <div class="card-header text-center">
+                      Read Below
+                    </div>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">${e[0].from+"                ------>             "+e[0].to}</h5>
+                      <p class="card-text">${e[0].description}</p>
+                      <p>Author ${e[0].email}</p>
+                    <a href="../html/stories.html" class="btn btn-primary">Go Back</a>
+                    </div>
+                  </div>`
+                }
+            })
+          }  
+        })
     })
 }

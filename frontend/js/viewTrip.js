@@ -1,6 +1,6 @@
 import getUrl from './url.js'
-const url = getUrl()
-console.log(url)
+const urls = getUrl()
+console.log(urls)
 window.onload =()=>{
     $.ajaxSetup({
         beforeSend: function(xhr){
@@ -31,7 +31,7 @@ let user=postOwner
                 method:"POST",
                 contentType:"application/json",
                 data:data,
-                url:"http://localhost:3003/user/reqPush",
+                url:urls+"/user/reqPush",
                 success:(e) =>{
                     alert("success",e)
                     console.log("nothing",e)
@@ -55,7 +55,9 @@ function getUserDetails(){
     
 let data=window.location.hash.split('#')[1]
 let postOwner=data.split('/')[0]
-let tripNam = (data.split('/')[1]).replace("%20", " ");
+let name=data.split('/')[1]
+let tripNam =decodeURIComponent(name)
+//let tripNam = (data.split('/')[1]).replace("%20", " ");
 console.log("THIS data",data)
 console.log("THIS data",postOwner)
 console.log("THIS trip Name",tripNam)
@@ -78,7 +80,7 @@ var endDate = $("#endDate");
         method:"POST",
         contentType:"application/json",
         data:data,
-        url:url+"/trip/getOne",
+        url:urls+"/trip/getOne",
         success:(e) =>{
             console.log(e)
             console.log(e.tripName)
@@ -133,7 +135,7 @@ let tripNam = (data.split('/')[1]).replace("%20", " ");
         method:"POST",
         contentType:"application/json",
         data:data,
-        url:url+"/trip/tripRequest",
+        url:urls+"/trip/tripRequest",
         success:(e) =>{
             console.log(e)
             alert(e+'Request sent: ' + message);

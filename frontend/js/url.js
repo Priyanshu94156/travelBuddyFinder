@@ -1,5 +1,5 @@
 function getUrl(){
-    const url = "http://localhost:3003";
+    const url = "http://3.145.169.46";
     return url;
 
 }

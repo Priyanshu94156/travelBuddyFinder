@@ -1,3 +1,6 @@
+import getUrl from './url.js'
+const urls = getUrl()
+console.log(urls)
 // const { getAllTrips } = require("../../backend/mvc/controllers/trips/tripsController");
 $.ajaxSetup({
     beforeSend: function(xhr){
@@ -7,7 +10,7 @@ $.ajaxSetup({
 getTrips()
 
 function getTrips(){
-    $.get("http://localhost:3003/trip/getAllTrips",function(data,status){
+    $.get(urls+"/trip/getAllTrips",function(data,status){
         console.log("this",data[9].photos[0])
         console.log(data[0].tripName)
         for(var i=0;i<data.length;i++){
@@ -40,8 +43,8 @@ function getTrips(){
         const list = document.getElementById("displayTrips")
         list.addEventListener("click",(e)=>{
              if(e.target.nodeName == "BUTTON"){
-                user= e.target.id
-                tripN = e.target.name
+                let user= e.target.id
+                let tripN = e.target.name
                 console.log(user)
                 console.log(tripN)
                 window.location.href="./viewTrip.html#"+user+"/"+tripN
@@ -63,7 +66,7 @@ function reqUser(user){
                 method:"POST",
                 contentType:"application/json",
                 data:data,
-                url:"http://localhost:3003/user/reqPush",
+                url:urls+"/user/reqPush",
                 success:(e) =>{
                     alert(e)
                     console.log("nothing",e)

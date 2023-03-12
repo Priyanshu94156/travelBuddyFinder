@@ -1,6 +1,6 @@
 import getUrl from './url.js'
-const url = getUrl()
-console.log(url)
+const urls = getUrl()
+console.log(urls)
 
 $.ajaxSetup({
     beforeSend: function(xhr){
@@ -19,7 +19,7 @@ $.ajax({
     method:"POST",
     contentType:'application/json',
     data:datas,
-    url:'http://localhost:3003/getReview',
+    url:urls+'/getReview',
     success:(e)=>{
         console.log(e)
         console.log(e.length)
@@ -58,7 +58,7 @@ $('#reviewSubmit').click(function(){
         method:"POST",
         contentType:'application/json',
         data:dats,
-        url:'http://localhost:3003/getReview/save',
+        url:urls+'/getReview/save',
         success:(e)=>{
             console.log(e)
             console.log(e.length)

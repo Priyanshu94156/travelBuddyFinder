@@ -1,6 +1,9 @@
 // import getUrl from './url.js'
 // const url = getUrl()
 // console.log(url)
+import getUrl from './url.js'
+const urls = getUrl()
+console.log(urls)
 window.onload= () =>{
 $.ajaxSetup({
     beforeSend: function(xhr){
@@ -11,9 +14,9 @@ $.ajaxSetup({
 }
 
 $("#silver").click(()=>{
-    email=localStorage.getItem("email"),
+    let email=localStorage.getItem("email"),
     currentSubscription=2
-    suscription={
+    let suscription={
         email:email,
         currentSubscription:currentSubscription
     }
@@ -22,7 +25,7 @@ $("#silver").click(()=>{
         method:"POST",
         contentType:"application/json",
         data:suscription,
-        url:"http://localhost:3003/subscribe/getSubscription",
+        url:urls+"/subscribe/getSubscription",
         success:(e)=>{
             console.log(e)
             if(e == "token not found") alert("token not found")
@@ -39,9 +42,9 @@ $("#silver").click(()=>{
 
 $("#gold").click(()=>{
   
-    email=localStorage.getItem("email"),
+    let email=localStorage.getItem("email"),
     currentSubscription=5
-    suscription={
+    let suscription={
         email:email,
         currentSubscription:currentSubscription
     }
@@ -50,7 +53,7 @@ $("#gold").click(()=>{
         method:"POST",
         contentType:"application/json",
         data:suscription,
-        url:"http://localhost:3003/subscribe/getSubscription",
+        url:urls+"/subscribe/getSubscription",
         success:(e)=>{
             console.log(e)
             if(e == "token not found") alert("token not found")
@@ -67,9 +70,9 @@ $("#gold").click(()=>{
 
 $("#platinum").click(()=>{
   
-    email=localStorage.getItem("email"),
+    let email=localStorage.getItem("email"),
     currentSubscription=10
-    suscription={
+    let suscription={
         email:email,
         currentSubscription:currentSubscription
     }
@@ -78,7 +81,7 @@ $("#platinum").click(()=>{
         method:"POST",
         contentType:"application/json",
         data:suscription,
-        url:"http://localhost:3003/subscribe/getSubscription",
+        url:urls+"/subscribe/getSubscription",
         success:(e)=>{
             console.log(e)
             if(e == "token not found") alert("token not found")

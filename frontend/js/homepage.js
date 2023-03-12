@@ -1,3 +1,6 @@
+import getUrl from './url.js'
+const urls = getUrl()
+console.log(urls)
 $(document).ready(function() {
 	new fullpage('#fullpage', {
 		menu: '#menu',
@@ -49,11 +52,11 @@ signinbtn.addEventListener('click', function() {
 	var mail=document.querySelector("#LogEmail");
 	var pwd= document.getElementById("LogPassword");
 	console.log(mail.value+" "+pwd.value);;
-	var url="http://localhost:3003/user/validate";
+	var url=urls+"/user/validate";
 	var email=mail.value;
 	var password=pwd.value;
-	data={email:email,password:password}
-	dataUser=JSON.stringify(data);
+	var data={email:email,password:password}
+	var dataUser=JSON.stringify(data);
 	console.log(dataUser);
 	$.ajax({
 		url:url,
@@ -100,7 +103,7 @@ signupBtn.addEventListener('click',()=>{
     if(pwd.value != pwd_conf.value){
         alert("password doesn't match!!")
     }else{
-        var url="http://localhost:3003/user/addUser";
+        var url=urls+"/user/addUser";
         var data={email:input_email.value,password:pwd.value,name:in_name.value,gender:in_gender.value,age:in_age.value,phno:in_phno.value};
         var data = JSON.stringify(data);
 		console.log(data)

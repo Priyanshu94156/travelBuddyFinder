@@ -178,7 +178,7 @@ function ss(){
         method:"POST",
         contentType:'application/json',
         data:dat,
-        url:'http://localhost:3003/getReview',
+        url:url+'/getReview',
         success:(e)=>{
             console.log(e)
             if(e.length>0){
@@ -197,7 +197,7 @@ $.ajax({
     method:"POST",
     contentType:'application/json',
     data:dat,
-    url:'http://localhost:3003/trip/getUpcomingTrip',
+    url:url+'/trip/getUpcomingTrip',
     success:(e)=>{
         console.log(e)
         for(var i=0; i<e.length; i++){

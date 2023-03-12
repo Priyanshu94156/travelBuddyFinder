@@ -1,6 +1,9 @@
 // import getUrl from './url.js'
 // const url = getUrl()23
-dates = new Date()
+import getUrl from './url.js'
+const urls = getUrl()
+console.log(urls)
+let dates = new Date()
 let month = (dates.getMonth()+1).toString()
 let year = (dates.getFullYear()).toString()
 let day = (dates.getDate()).toString()
@@ -11,7 +14,7 @@ if (day < 10) {
  if (month < 10) {
     month = '0' + month;
  } 
-mindate = year+"-"+month+"-"+day
+let mindate = year+"-"+month+"-"+day
 // console.log(mindate)
 // console.log(day, " ", month, " ", year)
 Date.prototype.addDays = function(days) {
@@ -19,7 +22,7 @@ Date.prototype.addDays = function(days) {
     date.setDate(date.getDate() + days);
     return date;
 }
-dates2 = (new Date()).addDays(30)
+let dates2 = (new Date()).addDays(30)
 let month2 = (dates2.getMonth()+1).toString()
 let year2 = (dates2.getFullYear()+1).toString()
 let day2 = (dates2.getDate()).toString()
@@ -30,15 +33,15 @@ if (day2 < 10) {
  if (month2 < 10) {
     month2 = '0' + month2;
  } 
-maxdate = year2+"-"+month2+"-"+day2
+let maxdate = year2+"-"+month2+"-"+day2
 // console.log(maxdate)
 document.getElementById('startDate').min = mindate
 document.getElementById('startDate').max = maxdate
 document.getElementById('endDate').max = maxdate
 document.getElementById('endDate').min = mindate
-function createTrip() {
-    pics=document.getElementById('File')
-    owner=window.localStorage.getItem('email'),
+$('#createTrip').click(()=> {
+    let pics=document.getElementById('File')
+    let owner=window.localStorage.getItem('email'),
         tripName=$('#tripName').val(),
         description=$('#description').val(),
         from = $('#from').val(),
@@ -57,7 +60,7 @@ function createTrip() {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
         // console.log(diffTime + " milliseconds");
         // console.log(diffDays + " days");
-    photos=[]
+    let photos=[]
     console.log("simple")
     console.log(pics.files)
     $.ajaxSetup({
@@ -112,7 +115,7 @@ function createTrip() {
         contentType:false,
         processData : false,
         'data': formdata,
-        'url': 'http://localhost:3003/trip/newTripSave',
+        'url': urls+'/trip/newTripSave',
         "success": (e) => { 
             console.log("sassssss", e)
             if(e == 'token not found'){alert("token not found")}
@@ -127,10 +130,10 @@ function createTrip() {
     })
 
 }
-}
+})
 
 
-function createStory() {
+$('#createStory').click(()=> {
     owner=window.localStorage.getItem('email'),
     photos=[]
     console.log("simple")
@@ -168,7 +171,7 @@ function createStory() {
         contentType:false,
         processData : false,
         'data': storyform,
-        'url': 'http://localhost:3003/stories/newstorySave',
+        'url': urls+'/stories/newstorySave',
         "success": (e) => { 
             console.log(e)
             if(e == 'token not found'){alert("token not found")}
@@ -178,4 +181,4 @@ function createStory() {
         error: (e) => { alert(e) }
     })
 
-}
+})

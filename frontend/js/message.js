@@ -1,3 +1,6 @@
+import getUrl from './url.js'
+const url = getUrl()
+console.log(url)
 const chat = document.getElementById('chats')
 const msgArea = document.querySelector('#messageArea')
 let owner=window.location.hash.split('#')[1]
@@ -10,7 +13,7 @@ $.ajaxSetup({
         xhr.setRequestHeader('token', localStorage.getItem('token'))
     }
 });
-data={
+let data={
     email:localStorage.getItem('email')
 }
 
@@ -18,7 +21,7 @@ data={
         method:"POST",
         contentType:"application/json",
         data:JSON.stringify(data),
-        url:"http://localhost:3003/user/getVisitors",
+        url:url+"/user/getVisitors",
         success:(e)=>{
             console.log(e)
             ShowUsers(e)
@@ -102,7 +105,7 @@ chat.addEventListener('submit',e=>{
 
 function ShowUsers(data){
     console.log(data)
-    for(i=0;i<data.length;i++){
+    for(let i=0;i<data.length;i++){
     
     document.querySelector('#messages').innerHTML+=`<div class="date mesListCard read" >
     <div class="trip_location text-ellipsis btn-btn-secondary">
@@ -139,7 +142,7 @@ function showHead(data){
 
 function showPrevChats(message){
     
-    for (i=0;i<message.length;i++){
+    for (let i=0;i<message.length;i++){
         console.log(message[i].sender)
         if(message[i].sender==localStorage.getItem('email')){
             document.querySelector('#messageArea').innerHTML+=`<div class="rightCard">

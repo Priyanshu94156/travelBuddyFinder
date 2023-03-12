@@ -8,12 +8,14 @@ var usercity = $("#city");
 var gender = $("#gender");
 var height = $("#height");
 var phno = $("#phno");
-var education = $("#education");
 var nationality = $("#nationality");
 var smoking = $("#smoking");
 var drinking = $("#drinking");
 var description = $("#description");
 var birthday = $("#birthday");
+
+let owner=window.location.hash.split('#')[1]
+console.log("THIS",owner)
 
 getUserDetails()
 function getUserDetails(){
@@ -22,10 +24,10 @@ function getUserDetails(){
             xhr.setRequestHeader('token', localStorage.getItem('token'));
         }
     });
-    $.get(url+"/abc/fetchUser/p@gmail.com",function(data,status){
+    $.get(url+"/abc/fetchUser/"+owner,function(data,status){
         console.log(data)
         userName1.html(data[0].name)
-        userEmail.html(email)
+        userEmail.html(data[0].email)
         userName.html(data[0].name)
         usercity.html(data[0].city)
         gender.html(data[0].gender)

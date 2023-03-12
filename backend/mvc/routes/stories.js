@@ -7,5 +7,6 @@ const storySave = require('../controllers/stories/stories')
 routes.post('/newStorySave', upload.array('photos',4),storySave.createStory)
 
 routes.get('/getAllStories', storySave.getAllStory)
+routes.post('/getSingleStory', storySave.getSingleStory)
 
 module.exports = routes

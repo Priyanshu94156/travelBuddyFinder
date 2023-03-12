@@ -4,17 +4,19 @@ const url = getUrl()
 console.log(url)
 var userName = $("#user_name");
 var userName1=$("#user_name1");
+var userName2=$("#user_name2");
 var userEmail=$("#email");
 var usercity = $("#city");
 var gender = $("#gender");
 var height = $("#height");
 var phno = $("#phno");
-var education = $("#education");
 var nationality = $("#nationality");
 var smoking = $("#smoking");
 var drinking = $("#drinking");
 var description = $("#description");
-var birthday = $("#birthday");
+// var profile_image=$("#user_img");
+var container=document.querySelector('#container')
+var container_for_stories=document.querySelector('#stories_container')
 
 var email = (window.localStorage.getItem('email'))
 $.ajaxSetup({
@@ -22,11 +24,15 @@ $.ajaxSetup({
         xhr.setRequestHeader('token', localStorage.getItem('token'));
     }
 });
+
 getUserDetails()
 function getUserDetails(){
     $.get(url+"/abc/fetchUser/"+email,function(data,status){
         console.log(data)
+        // profile_image.attr("src",data[0].img)
         userName1.html(data[0].name)
+        userName2.html(data[0].name)
+
         userEmail.html(email)
         userName.html(data[0].name)
         usercity.html(data[0].city)
@@ -40,10 +46,74 @@ function getUserDetails(){
         description.html(data[0].description)
         // birthday.html(data[0].birthday)
         barDisplay();
+        $('#edit_profile_image').css({"display":"none"})
+    })
+    $.get(url+'/trip/fetchUserTrip/'+email,function(data){
+        console.log("trip data reached"+data)
+        container.innerHTML=``;
+        for(var i =0;i<data.length;i++){
+            var from=data[i].from;
+            var to=data[i].to;
+            var startDate=data[i].startDate;
+            startDate=startDate.slice(0,10);
+            var endDate=data[i].endDate;
+            endDate=endDate.slice(0,10)
+            var owner = data[i].owner;
+            var id=data[i]._id
+            let x=renderCard(id,from,to,startDate,endDate,owner);
+            container.innerHTML+=x;
+        }
+    })
+    $.get(url+'/stories/fetchUserStory/'+email,function(data){
+        // console.log(data)
+        container_for_stories.innerHTML=``;
+        for(var i =0;i<data.length;i++){
+            var from=data[i].from;
+            // console.log(from+"from sjdnvsnj")
+            var to=data[i].to;
+            var description=data[i].description
+            let render_card=renderStoryCard(from,to,description);
+            container_for_stories.innerHTML+=render_card;
+        }
     })
 }
+function renderCard(id,from, to, startDate,endDate,owner){
+    return (`<div class="trip_card date row">
+    <div class="col-sm-3 pr-0">
+        <img src="../static/images/bg1.jpg" class="img-fluid">
+    </div>
+    <div class="col-sm-9">
+        <div class="trip_location">
+            <span class="tl">${from}</span>
+            <span class="trip_color"> > </span>
+            <span class="tl">${to}</span>
+            <span class="trip_color">  </span>
+        </div>
+        <div class="trip_date">${startDate} - ${endDate}</div>
+        <div class="trip_type"><span class="trip_color"></span> 
+        </div>
+    </div>
+    </div>
+</div>`)
+}
+function renderStoryCard(from,to,description){
+    return(`<div class="trip_card date row">
+    <div class="col-sm-3 pr-0">
+        <img src="../static/images/bg1.jpg" class="img-fluid image-pop">
+    </div>
+    <div class="col-sm-9">
+        <div class="blog_title">From ${from} to ${to}</div>
+        <div class="blog_date"></div>
+        <div class="blog_excerpt">${description}</div>
+        <div class="blog_action d-flex align-items-center c2 fw500">
 
+    </div>
+    <button class="btn theme2-btn text-right" id="view_photos">View Full Story</button>
 
+    </div>
+</div>
+`)
+}
 
 //edit to submit 
 $("#edit").click(()=>{
@@ -81,6 +151,8 @@ function edit() {
         $("#smoking").attr("contenteditable",true);
         $("#drinking").attr("contenteditable",true);
         $("#description").attr("contenteditable",true);
+        // $('#edit_profile_image').css({"display":"inline"})
+
         $("#edit").html("Save Changes");
         flag_es=1;
         
@@ -97,6 +169,8 @@ function edit() {
         $("#smoking").attr("contenteditable",false);
         $("#drinking").attr("contenteditable",false);
         $("#description").attr("contenteditable",false);
+        // $('#edit_profile_image').css({"display":"none"})
+
         $("#edit").html("Edit");
         updateData();
         flag_es=0;
@@ -107,6 +181,7 @@ function edit() {
     function updateData(){
     
         var data={
+            // $img:$("#profile_image").path(),
             name:$("#user_name").text(),
             phno:$("#phno").text(),
             gender:$("#gender").text(),

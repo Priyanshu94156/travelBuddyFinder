@@ -3,11 +3,15 @@ const user = require('../../models/userModel').userModel;
 function updateUser(req, res) {
     console.log(req.params.email)
     console.log(req.body);
+    // pics={};
+    // pics.push(req.files.location)
     user.updateOne(
         { email: req.params.email },
         {
             $set:
-                {   phno: req.body.phno ,
+                {  
+                    // img:pics,
+                    phno: req.body.phno ,
                     gender:req.body.gender,
                     height:req.body.height,
                     city:req.body.city,

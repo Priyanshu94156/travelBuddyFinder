@@ -2,6 +2,10 @@ const db= require('./connection').db;
 const mongoose= require('./connection').mongoose;
 
 const userSchema= mongoose.Schema({
+    // img:{
+    //     type:String,
+    //     // required:true
+    // },
     name:{
         type:String,
         // required:true

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timoo | Trip Info</title>
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<!-- <link rel="icon" type="image/png" href="imgs/favicon.png"> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,700">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/custom.css">
+	<link rel="stylesheet" href="../css/profile.css">
+	<!-- <link rel="stylesheet" href="../css/search.css"> -->
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="homepage.html"><img class="logo" src="../static/images/logo.png"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+				<form class="form-inline my-2 my-lg-0 ml-auto">
+					<!-- <a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/search.png"></a> -->
+					<!-- <a href="#" class="pr-3"><img class="nav_icon" src="../static/images/logo/settings.png"></a> -->
+					<button class="btn timoo-outline-btn ml-2 my-2 my-sm-0" id="homebutton" type="submit">Home</button>
+				</form>
+			</div>
+		</nav>
+	</div>
+	<!-- main content -->
+	<div class="container-fluid">
+		<div class="row">
+			<!-- sidebar -->
+			<div class="col-sm-2 d-none d-sm-block sidebar">
+				<div class="position-fixed">
+					<div class="vr_line"></div>
+					<ul class="list-group">
+						<li class="list-group-item"><a href="profile.html">My Profile</a></li>
+					<li class="list-group-item"><button id="trip" name="trip">Trips</button></li>
+					<li class="list-group-item"><a href="#">Favorites</a></li>
+					<li class="list-group-item"><a href="message.html">Messages</a></li>
+					</ul>
+					<div class="vr_line"></div>
+				</div>
+			</div>
+			<!-- main -->
+			<div class="col-sm-8 col-12 main_body mt-4">
+				<div class="row top_part ">
+					<div class="col-sm-4">
+						<!-- <img class="user_img" src="../static/images/bg1.jpg"> -->
+					</div>
+					<div class="col-sm-4 text-center d-flex flex-column align-items-center justify-content-center">
+						<h2 class="username" id="user_name">TRIP INFORMATION</h2>
+						<p class="user_location" id="user_location"></p>
+						<div class="d-flex prg_holder align-items-center justify-content-center">
+							<!-- <div class="progress">
+								<div class="progress-bar" role="progressbar" id="bar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+							</div> -->
+							<!-- <span class="pl-2 f2" id="progresspercentage"></span> -->
+						</div>
+					</div>
+					<!-- <div class="col-sm-4">
+						<div class="other_profile  text-right">
+							<a href="" class="other_inline pt-2"><img class="psd_icn mr-2" src="../static/images/logo/fav.png">FAVORITE</a>
+						</div>
+					</div> -->
+				</div>
+				<div class="row bottom_part text-center bg1 py-4" >
+					<!-- <p class="col-sm-6 offset-sm-3" id="description">I am a passionate traveler coming from India and currently staying in USA. 
+					And I really love meeting new people and making new friends.</p> -->
+                    <h3 class="col-sm-6 offset-sm-3"> <span id="from_disp"></span>         <span class="trip_color"> -> </span>
+						<span id="to_disp"></span> </h3> 
+				</div>
+
+				<div class="bg2 row ">
+
+					<div class="col-sm-12">
+                        
+						<div id="profile" class="mb-3">
+                            
+							<div class="card">
+                                
+								<div class="card-header bg1" id="headingOne">
+                                    
+									<h2 class="mb-0">
+										<h3>
+											Information</h3>
+                                            
+                                            <br>
+									</h2>
+									<img class="icons" src="../static/images/icons/friendship-day.svg">
+								</div>
+
+								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+									data-parent="#profile">
+									<div class="card-body pt-0">
+										<div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Creator's Email: </h5>
+											</div>
+											<div  id="email" contenteditable="false">
+											
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Gender:</h5>
+											</div>
+											<div  id="gender" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Trip Name:</h5>
+											</div>
+											<div  id="trip_name" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">From:</h5>
+											</div>
+											<div  id="from_loc" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">To:</h5>
+											</div>
+											<div  id="to_loc" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Trip Starts on:</h5>
+											</div>
+											<div  id="startDate" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Trip Ends on:</h5>
+											</div>
+											<div  id="endDate" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Preferences:</h5>
+											</div>
+											<div  id="preferences" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Trip type:</h5>
+											</div>
+											<div  id="keywords" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+                                        <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Travelling Budget:</h5>
+											</div>
+											<div  id="travelCost" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+										<!-- <div class="row" >
+											<div class="col-sm-3">
+												<h5 class="mb-0">Gender:</h5>
+											</div>
+											<div  id="gender" class="col-sm-6"
+												contenteditable="false"> 
+											</div>
+										</div>
+										<hr>
+										<div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Height (in cms):</h5>
+											</div>
+											<div  id="height" class="col-sm-6"
+											contenteditable="false">
+											</div>
+										</div>
+										<hr>
+										<div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">City:</h5>
+											</div>
+											<div  id="city" class="col-sm-6"
+												contentEditable="false">
+											</div>
+										</div>
+										<hr>
+										<div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Nationality:</h5>
+											</div>
+											<div id="nationality" class="col-sm-6"
+												contentEditable="false">
+											</div>
+										</div>
+										<hr>
+										<div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Phone number:</h5>
+											</div>
+											<div class="col-sm-3" id="phno" class="col-sm-6"
+												contentEditable="false">
+											</div>
+										</div>
+										<hr>
+										<br>
+										
+										<h5>Additional Information</h5>
+										<hr> -->
+			
+									
+										<!-- <div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Birthday:</h5>
+											</div>
+											<div id="birthday" class="col-sm-6"
+												contentEditable="false">
+											</div>
+										</div>
+										<hr> -->
+										<!-- <div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Smoking:</h5>
+											</div>
+											<div id="smoking" class="col-sm-6"
+												contentEditable="false">
+											</div>
+										</div>
+										<hr>
+										<div class="row">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Drinking:</h5>
+											</div>
+											<div id="drinking"  class="col-sm-6"contentEditable="false"></div>
+										</div>
+										<hr> -->
+
+										<div class="row">
+											<div class="col-sm-10">
+												
+                                                <button class="btn alert-dark col-4" id="view_profile" type="submit">View User Profile</button>
+                                                <a class="btn btn-info col-4 m-2" target="_blank" id="chat">Chat</a>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- about travelling -->
+						
+                        
+                        <!-- <div id="travelling" class="mb-3">
+							<div class="card">
+								<div class="card-header bg1 " id="headingTwo">
+									<h5 class="mb-0">
+										<button class="btn btn-link text-dark no-underline pl-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+											About Travelling
+										</button>
+									</h5>
+									<img class="icons" src="data:img/png;base64,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">
+
+								</div>
+
+								<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#travelling">
+									<div class="card-body pt-0">
+										<div><span>Why do i want to travel? </span><br>
+											<span class="t_reason"></span>
+										</div>
+										<hr>
+										<div><span>Im looking for: </span><span class="t_looking"></span></div>
+										<div><span>Country I Travelled:  </span><span class="t_travelled"></span></div>
+
+									</div>
+								</div>
+							</div>
+						</div> -->
+						<!-- end -->
+					</div>
+
+					<!-- right side -->
+					<!-- <div class="col-sm-12">
+						<div id="trips" class="mb-3 bg1">
+							<div class="card">
+								<div class="card-header bg1 " >
+									<h5 class="mb-0">
+										<span class="username" id="user_name1">default</span>'s Trip
+										<span class="float-right">4<span class="lfw">/12</span></span>
+									</h5>
+									<img class="icons" src="../static/images/icons/world.svg">
+								</div>
+
+								<div class="card-body pt-0 ">
+									<div class="trip_area">
+										<div class="trip_card date row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">London</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Date Trip</span> 
+													<span>We'll split 50-50</span>
+												</div>
+											</div>
+										</div>
+										<div class="trip_card friends row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">London</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Seatle</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Boston</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Friends Trip</span> 
+													<span>Female</span>
+												</div>
+											</div>
+										</div>
+										<div class="trip_card friends row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">New York</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Seatle</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Boston</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Friends Trip</span> 
+													<span>Female</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="text-right mt-2">
+										<button class="btn theme2-btn ">Show more trips</button>
+									</div>
+								</div>
+							</div>
+						</div> -->
+						<!-- trip end -->
+
+						<!-- blog -->
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<footer class="py-4 mt-4">
+		 <div class="normal_int ">
+			<div class="row f2 fw500 c4">
+					<!--<div class="col-sm-1 col-4">About Us</div> 
+					<div class="col-sm-1 col-4">Guidelines</div>
+					<div class="col-sm-1 col-4">Blog</div>
+					<div class="col-sm-1 col-4">Terms</div>
+					<div class="col-sm-1 col-4">Privacy</div>
+					<div class="col-sm-1 col-4">GDPR</div> -->
+				<div class="col-sm-4 c4 lfw">© 2023 Timoo All Rights Reserved</div>
+				<!-- <div class="col-sm-2 follow_icon c2 ">FOLLOW US!
+					<img src="../static/images/facebook.svg">
+					<img src="../static/images/twitter.svg">
+					<img src="../static/images/youtube.svg">
+					<img src="../static/images/instagram.svg">
+				</div>
+			</div>
+		</div> -->
+	</footer>
+	</div>
+
+</body>
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="../js/tripInfo.js" type="module"></script>
+<script src="../js/homepage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</html>

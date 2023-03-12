@@ -25,8 +25,8 @@ let user=postOwner
         email:user,
         reqEmail:localStorage.getItem('email')
     }
-    console.log("data",data)
     data=JSON.stringify(data)
+    console.log("data",data)
     $.ajax({
                 method:"POST",
                 contentType:"application/json",
@@ -55,7 +55,9 @@ function getUserDetails(){
     
 let data=window.location.hash.split('#')[1]
 let postOwner=data.split('/')[0]
-let tripNam = (data.split('/')[1]).replace("%20", " ");
+let name=data.split('/')[1]
+let tripNam =decodeURIComponent(name)
+// let tripNam = (data.split('/')[1]).replace("%20", " ");
 console.log("THIS data",data)
 console.log("THIS data",postOwner)
 console.log("THIS trip Name",tripNam)

@@ -60,7 +60,8 @@ const userSchema= mongoose.Schema({
           ref: 'tripDetails'
         }],
     visitedUsers:[],
-    reviews:[]
+    reviews:[],
+    tripTime:[]
 })
  let userModel=mongoose.model('users',userSchema,'users');
 module.exports={userModel};

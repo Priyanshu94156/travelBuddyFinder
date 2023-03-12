@@ -31,8 +31,8 @@ $.ajax({
         alert("plz review you journey")
         }
         else{
-            console.log('sdfs')
-            alert("welcome back")
+            alert("No trips to review")
+            window.location.href = "../html/profile.html"
         }
     }
 })

@@ -110,7 +110,9 @@ function renderRequests(data){
                     let ins=JSON.stringify(obj);
                     $.ajax({
                         "method":"POST",contentType:"application/json",'data':ins,'url':url+"/trip/acceptOrReject",
-                    "success":(e)=>{console.log("sucessfully accepted")},error:(e)=>{alert(e)}
+                    "success":(e)=>{console.log("sucessfully accepted") 
+                    alert("accepted Successfully")
+                window.location.href="profile.html"},error:(e)=>{alert(e)}
                     }); 
                     console.log("accept",ins)
 
@@ -123,7 +125,9 @@ function renderRequests(data){
                     let ins=JSON.stringify(obj);
                     $.ajax({
                         "method":"POST",contentType:"application/json",'data':ins,'url':url+"/trip/acceptOrReject",
-                    "success":(e)=>{console.log("sucessfully rejected")},error:(e)=>{alert(e)}
+                    "success":(e)=>{console.log("sucessfully rejected")
+                    alert("Rejected Successfully")
+                    window.location.href="profile.html"},error:(e)=>{alert(e)}
                     }); 
                     console.log("dec",ins)
             }

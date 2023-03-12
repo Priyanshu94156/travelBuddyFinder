@@ -32,7 +32,6 @@ function getTrips(){
             <div class="col-sm-3 ">
                 <button class="btn btn primary" style="margin;" name="${data[i].tripName}" id="${data[i].owner}"  >view Details</button>
 
-                <button class="btn btn primary" style="margin;" name="join" id="${data[i].owner}" >ask to join</button>
 
             </div>  
         </div>

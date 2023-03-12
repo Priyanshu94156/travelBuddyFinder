@@ -37,8 +37,7 @@ const tripSchema = mongoose.Schema({
     },
     photos:{
         type: Array
-    },
-    members:[]
+    }
 })
 
 

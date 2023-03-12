@@ -107,4 +107,21 @@ function getAllTrips(req,res){
     })
 }
 
-module.exports = {addTrips,getAllTrips}
+async function getSpecificTrip(req,res){
+    try{
+    console.log("hello",req.body)
+    console.log(req.body.tripName)
+    let trip = await tripCtrl.tripModel.findOne({owner:req.body.owner,tripName:req.body.tripName})
+    if(!trip){
+        res.send("no data found")
+    }
+    else{
+        res.send(trip)
+    }
+    }
+    catch(e){
+        res.send(e)
+    }
+}
+
+module.exports = {addTrips,getAllTrips,getSpecificTrip}

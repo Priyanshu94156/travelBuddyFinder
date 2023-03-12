@@ -95,7 +95,7 @@ function reqPush(req,res){
                     if(err){
                         res.send(err)
                     }else{
-                        res.send("added")
+                        console.log("added")
                     }
                  })
 
@@ -103,7 +103,7 @@ function reqPush(req,res){
             flag=0
             for(i=0;i<data.visitedUsers.length;i++){
                 if(req.body.reqEmail==data.visitedUsers[i]){
-                    res.send("already have you")
+                    console.log("already have you")
                     flag=1
                     break
                 }

@@ -149,8 +149,5 @@ if(localStorage.getItem("email")){
 			xhr.setRequestHeader('token', localStorage.getItem('token'));
 		}
 	});
-	$("#loginn").html(`<a href='profile.html'>${localStorage.getItem("email")}</a><br><button id="hola" >Log Out</button>`)
+	$("#loginn").html(`<a href='profile.html'>${localStorage.getItem("email")}</a><br><button id="hola" onclick=localStorage.clear(),location.reload() >Log Out</button>`)
 }
-
-
-$('#hola').click(window.localStorage.clear)

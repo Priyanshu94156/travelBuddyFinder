@@ -57,13 +57,13 @@
 						</header>
 						<div class="scrollArea p-3">
 							<form class="searchToggle tripEn tripFilterForm d-none" onsubmit="return false">
-								<input type="text" name="startloc" class="form-control customInp" placeholder="Starting Location">
-								<input type="text" name="endloc" class="form-control customInp" placeholder="Ending Location">
-								<h6>Trips Type</h6>
+								<input type="text" name="startloc" class="form-control customInp" placeholder="Starting Location" id="search_startloc">
+								<input type="text" name="endloc" class="form-control customInp" placeholder="Ending Location" id="search_endloc">
+								<!-- <h6>Trips Type</h6>
 								<div class="mb-1 tripRadio">
 									<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','.tripRadio')">Group</button>
 									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripRadio')">Date</button>
-								</div>
+								</div> -->
 								<div class="form-group row">
 									<div class="col-6">
 										<label for="fromDate" class="col-form-label customLabel">From Date</label>
@@ -75,16 +75,18 @@
 									</div>
 								</div>
 								<div class="mb-1 genderRadio">
-									<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')">Female</button>
-									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')">Male</button>
-									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')">Any</button>
+									<button class="theme2btn selected btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" id="search_female">Female</button>
+									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" id="search_male">Male</button>
+									<button class="theme2btn btn" onclick="toggleSel($(this),'.theme2btn','.tripFilterForm .genderRadio')" id="search_both">Any</button>
 								</div>
-								<input type="text" name="nop" class="form-control customInp" placeholder="Number of persons">
+								<!-- <input type="text" name="nop" class="form-control customInp" placeholder="Number of persons"> -->
 
-								<input type="text" name="keyword" class="form-control customInp" placeholder="Keyword">
+								<!-- <input type="text" name="keyword" class="form-control customInp" placeholder="Keyword"> -->
+								<br>
+								<br>
 								<div class="pt-2">
-									<button type="submit" class="btn theme2-btn">APPLY</button>
-									<button type="reset" class="btn theme2-outline-btn">RESET ALL</button>
+									<button type="submit" class="btn theme2-btn" id="search_apply">APPLY</button>
+									<button type="reset" class="btn theme2-outline-btn" id="search_reset">RESET ALL</button>
 								</div>
 							</form>
 							<form class="searchToggle memberFilterForm memberEn" onsubmit="return false">
@@ -236,7 +238,7 @@
 					<!-- message box -->
 					<div class="col-sm-8 rightContentArea unscrollMain">
 						<header class="d-flex align-items-center">
-							<h6 class="m-0">< Back</h6>
+							<!-- <h6 class="m-0"> Back</h6> -->
 							<h5 class="mx-auto">Search</h5>
 
 						</header>
@@ -258,6 +260,9 @@
 											<input type="text" name="search" class="customInp form-control">
 										</div>
 									</div>
+									
+
+
 									<p class="f5 px-3">About 5 results</p>
 									<div class="search_results row px-4 secScrollArea">
 										<!-- clone -->
@@ -320,12 +325,16 @@
 								</div>
 								<!-- trips -->
 								<div class="tab-pane fade px-3" id="trips" role="tabpanel" aria-labelledby="trips-tab">
-									<div class="search_box px-4 mx-4 pt-3 pb-3">
+									<!-- <div class="search_box px-4 mx-4 pt-3 pb-3">
 										<p class="m-0">I am looking for Trips at</p>
 										<div class="position-relative">
 											<input type="text" name="search" class="customInp form-control">
-										</div>
+										</div> -->
+									
 									</div>
+									<br>
+									<br>
+									<br>
 									<p class="f5 px-3">About 5 results</p>
 									<div class="search_results row px-4 secScrollArea">
 										<div class="trip_card date row">

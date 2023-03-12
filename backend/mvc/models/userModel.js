@@ -20,15 +20,51 @@ const userSchema= mongoose.Schema({
         // required:true
     },
     age:{
-        type:String,
+        type:Number,
         // required:true
     },
     gender:{
         type:String,
         // required:true
-    }
+    },
+    city:{
+        type:String,
+        // required:true
+    },
+    nationality:{
+        type:String,
+        // required:true
+    },
+    description:{
+        type:String,
+        // required:true
+    },
+    smoking:{
+        type:String,
+    },
+    drinking:{
+        type:String,
+    },
+    height:{
+        type:Number,
+    },
+    currentSubscription:{
+        type:Number
+    },
+    previousSubscriptions:[{
+        type:Object
+    }],
+    trips:[
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'tripDetails'
+        }],
+    blackedTrips:[],
+    visitedUsers:[],
+    reviews:[],
+    tripTime:[]
 })
- let userModel=mongoose.model('users',userSchema);
+ let userModel=mongoose.model('users',userSchema,'users');
 module.exports={userModel};
 
 

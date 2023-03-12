@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 	new fullpage('#fullpage', {
 		menu: '#menu',
@@ -40,22 +39,13 @@ $(document).on('click', '.menu-link', function(){
 });
 
 
-//google sign in
-$("#googlebtn").click(()=>{
-	console.log("clicked")
-    // window.location.href="http://localhost:3002/auth/google";
-})
+// ----------------------------------------------------------------------------------------------//
 
 
 
 //sign in button
 var signinbtn = document.getElementById('signinbtn');
 signinbtn.addEventListener('click', function() {
-	// alert('You have clicked')
-	// window.location.replace("profile.html")
-	// if(!validatesignin()){
-	// 	return false;
-	// }
 	var mail=document.querySelector("#LogEmail");
 	var pwd= document.getElementById("LogPassword");
 	console.log(mail.value+" "+pwd.value);;
@@ -63,19 +53,24 @@ signinbtn.addEventListener('click', function() {
 	var email=mail.value;
 	var password=pwd.value;
 	data={email:email,password:password}
-	data=JSON.stringify(data);
+	dataUser=JSON.stringify(data);
+	console.log(dataUser);
 	$.ajax({
 		url:url,
         type:"POST",
-        data:data,
-        dataType:"json",
+        data:dataUser,
+        contentType:"application/json",
         success:function(data){
 			console.log("sucessful");
-			console.log(data);
-			// data=JSON.parse(data);
+			data = JSON.parse(data) 
+			localStorage.setItem("token",data.token);
+			//console.log("data",data.status);
+			
 			if(data.status =="valid"){
-				console.log(data.name)
-				localStorage.setItem("userName",data.name);
+				console.log("data",data);
+				// console.log(username)
+				window.localStorage.setItem("email",data.email)
+				window.localStorage.setItem("username",data.name)
 				window.location.replace("profile.html");
 
 				alert("successful login")
@@ -83,9 +78,7 @@ signinbtn.addEventListener('click', function() {
 			else if(data.status =="invalid"){
                 alert("Invalid email or password");
             }
-			else{
-                alert("Something went wrong");
-            }
+			
 	},
 	error:function(){
         console.log("error with the server");
@@ -124,8 +117,8 @@ signupBtn.addEventListener('click',()=>{
                     console.log(data);
                     data = JSON.parse(data);
                     if(data.status=="valid"){
-                        localStorage.setItem("email",email)
-                        // localStorage.setItem("userName",userName);
+                        localStorage.setItem("email",email);
+                        // localStorage.setItem("name",username);
                         window.location.replace("profile.html")
                         alert("user registered successfully")
                     }else if(data.status=="exist"){
@@ -145,3 +138,14 @@ signupBtn.addEventListener('click',()=>{
 
 })
 
+
+
+if(localStorage.getItem("email")){
+	console.log("email found")
+	$.ajaxSetup({
+		beforeSend: function(xhr){
+			xhr.setRequestHeader('token', localStorage.getItem('token'));
+		}
+	});
+	$("#loginn").html(`<a href='profile.html'>${localStorage.getItem("email")}</a><br><button id="hola" onclick=localStorage.clear(),location.reload() >Log Out</button>`)
+}

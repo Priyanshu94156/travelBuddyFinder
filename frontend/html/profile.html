@@ -51,7 +51,8 @@
 			<div class="col-sm-8 col-12 main_body mt-4">
 				<div class="row top_part ">
 					<div class="col-sm-4">
-						<img class="user_img" src="../static/images/bg1.jpg">
+						<img class="user_img" id="user_img" src="../static/images/bg1.jpg">
+						<!-- <label for="profile_image" class="btn col-sm-4 ">submit</label> -->
 					</div>
 					<div class="col-sm-4 text-center d-flex flex-column align-items-center justify-content-center">
 						<h3 class="username" id="user_name">hola</h3>
@@ -92,6 +93,16 @@
 								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
 									data-parent="#profile">
 									<div class="card-body pt-0">
+										<!-- <div class="row" id="edit_profile_image">
+											<div class="col-sm-3">
+												<h5 class="mb-0">Profile Photo: </h5>
+											</div>
+											<div  id="profile_photo" contenteditable="false">
+											<input type="file" id="profile_image">
+
+											</div>
+										</div>
+										<hr> -->
 										<div class="row">
 											<div class="col-sm-3">
 												<h5 class="mb-0">Email: </h5>
@@ -196,7 +207,7 @@
 							</div>
 						</div>
 						<!-- about travelling -->
-						<div id="travelling" class="mb-3">
+						<!-- <div id="travelling" class="mb-3">
 							<div class="card">
 								<div class="card-header bg1 " id="headingTwo">
 									<h5 class="mb-0">
@@ -221,7 +232,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- end -->
+						end -->
 					</div>
 
 					<!-- right side -->
@@ -230,15 +241,17 @@
 							<div class="card">
 								<div class="card-header bg1 " >
 									<h5 class="mb-0">
-										<span class="username" id="user_name1">default</span>'s Trip
-										<span class="float-right">4<span class="lfw">/12</span></span>
+										<span class="username" id="user_name1">User</span>'s created trips
+										<!-- <span class="float-right">4<span class="lfw">/12</span></span> -->
 									</h5>
 									<img class="icons" src="../static/images/icons/world.svg">
 								</div>
 
 								<div class="card-body pt-0 ">
 									<div class="trip_area">
-										<div class="trip_card date row">
+										<div class="container" id="container">
+
+										<!-- <div class="trip_card date row">
 											<div class="col-sm-3 pr-0">
 												<img src="../static/images/bg1.jpg" class="img-fluid">
 											</div>
@@ -254,8 +267,9 @@
 													<span>We'll split 50-50</span>
 												</div>
 											</div>
-										</div>
-										<div class="trip_card friends row">
+											</div>
+										</div> -->
+										<!-- <div class="trip_card friends row">
 											<div class="col-sm-3 pr-0">
 												<img src="../static/images/bg1.jpg" class="img-fluid">
 											</div>
@@ -296,16 +310,115 @@
 													<span>Female</span>
 												</div>
 											</div>
-										</div>
+										</div> -->
 									</div>
-									<div class="text-right mt-2">
+									<!-- <div class="text-right mt-2">
 										<button class="btn theme2-btn ">Show more trips</button>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
-						<!-- trip end -->
 
+						<!-- stories -->
+						<div id="trips" class="mb-3 bg1">
+							<div class="card">
+								<div class="card-header bg1 " >
+									<h5 class="mb-0">
+										<span class="username" id="user_name2">User</span>'s stories
+										<!-- <span class="float-right">4<span class="lfw">/12</span></span> -->
+									</h5>
+									<img class="icons" src="../static/images/icons/users.svg">
+								</div>
+								<div class="card-body pt-0 ">
+									<div class="trip_area">
+										<div class="container" id="stories_container">
+
+										<div class="trip_card date row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid image-pop">
+											</div>
+											<div class="col-sm-9">
+												<div class="blog_title">title</div>
+												<div class="blog_date">11.07.2008 - </div>
+												<div class="blog_excerpt">When I quit my desk job in 2014 and started to travel solo, my biggest concern wasn't 
+												whether my online businesses would fail. It was whether I would be able to make</div>
+												<div class="blog_action d-flex align-items-center c2 fw500">
+
+											</div>
+											<button class="btn theme2-btn text-right" id="view_photos">View Photos</button>
+
+											</div>
+										</div>
+										<!-- <div class="trip_card friends row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">London</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Seatle</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Boston</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Friends Trip</span> 
+													<span>Female</span>
+												</div>
+											</div>
+										</div>
+										<div class="trip_card friends row">
+											<div class="col-sm-3 pr-0">
+												<img src="../static/images/bg1.jpg" class="img-fluid">
+											</div>
+											<div class="col-sm-9">
+												<div class="trip_location">
+													<span class="tl">New York</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Paris</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Seatle</span>
+													<span class="trip_color"> > </span>
+													<span class="tl">Boston</span>
+													<span class="trip_color"> ! </span>
+												</div>
+												<div class="trip_date">11.07.2008 - 01.02-2008</div>
+												<div class="trip_type"><span class="trip_color">Friends Trip</span> 
+													<span>Female</span>
+												</div>
+											</div>
+										</div> -->
+									</div>
+									<!-- <div class="text-right mt-2">
+										<button class="btn theme2-btn ">Show more trips</button>
+									</div> -->
+								</div>
+							</div>
+						</div>
+
+<!-- 
+								<div class="blog_area">
+									<div class="blog_card date row">
+										<div class="col-sm-3 pr-0">
+											<img src="../static/images/bg1.jpg" class="img-fluid">
+										</div>
+										<div class="col-sm-9">
+											<div class="blog_title">How to Make Friends When You Travel Solo</div>
+											<div class="blog_date">11.07.2008</div>
+											<div class="blog_excerpt">When I quit my desk job in 2014 and started to travel solo, my biggest concern wasn't 
+											whether my online businesses would fail. It was whether I would be able to make</div>
+											<div class="blog_action d-flex align-items-center c2 fw500">
+												 <img class="psd_icn mr-2" src="../static/images/icons/like.svg">45 -->
+												<!-- <img class="psd_icn mr-2 ml-2" src="../static/images/icons/comment.svg">7 -->
+											</div>
+										</div>
+									</div>
+								</div> -->
+						<!-- trip end -->
+							
 						<!-- blog -->
 
 					</div>

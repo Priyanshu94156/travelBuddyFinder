@@ -1,7 +1,7 @@
 const express= require('express');
 const routes = express.Router();
 
-
+// const uploadImage = require('../middleware/upload')
 const userDetails = require('../controllers/user/fetch')
 const allUsers=require('../controllers/user/fetchAll')
 const validate=require('../controllers/user/validate')
@@ -16,7 +16,7 @@ routes.get('/fetchAllUsers',allUsers.fetchAllUsers)
 
 routes.post('/validate',validate.validate)
 routes.post('/addUser',addUser.addUser)
-routes.post('/userUpdate/:email',userUpdate.updateUser)
+// routes.post('/userUpdate/:email',uploadImage.single("profile"),userUpdate.updateUser)
 
 
 module.exports = routes;    

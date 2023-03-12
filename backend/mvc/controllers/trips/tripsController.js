@@ -247,4 +247,43 @@ async function acceptOrReject(req,res){
 
 }
 
-module.exports = {addTrips,getAllTrips,getSpecificTrip ,travellingRequest, getRequestToOwner ,acceptOrReject}
+function getTripsForProfile(req, res){
+    tripCtrl.tripModel.find({email:req.body.email}, (err, trip) =>{
+        res.send(trip)
+    })
+}
+async function getUpcomingTrip(req, res){
+    try{
+    const data = await (await user.find({email:req.body.email}).populate('trips'))
+    if(!data){
+        res.send("Not Found")
+    }
+    else{
+    let upcomingTrips = []
+    console.log(data)
+    for(let i = 0; i < data[0].trips.length; i++){
+        // if(data[0].trips[i].endDate < )
+        // console.log("sdfsd",data[0].trips[i].startDate)
+        if(new Date(Date()) < data[0].trips[i].startDate){
+            console.log(data[0].trips[i])
+            const toShow = {
+                tripName: data[0].trips[i].tripName,
+                email: data[0].trips[i].owner,
+                objectId: data[0].trips[i]._id,
+                members: data[0].trips[i].members,
+                startDate: data[0].trips[i].startDate,
+                from: data[0].trips[i].from,
+                to: data[0].trips[i].to
+            }
+            upcomingTrips.push(toShow)
+        }
+    }
+    res.send(upcomingTrips)
+}
+}
+catch(e){
+    res.send("Not Found")
+}
+}
+
+module.exports = {getUpcomingTrip, getTripsForProfile, addTrips,getAllTrips,getSpecificTrip ,travellingRequest, getRequestToOwner ,acceptOrReject}

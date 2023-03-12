@@ -191,3 +191,37 @@ function ss(){
         }
     })
 }
+
+
+$.ajax({
+    method:"POST",
+    contentType:'application/json',
+    data:dat,
+    url:'http://localhost:3003/trip/getUpcomingTrip',
+    success:(e)=>{
+        console.log(e)
+        for(var i=0; i<e.length; i++){
+        document.querySelector(".trip_area").innerHTML += `<div class="trip_card date row">
+        <div class="col-sm-3 pr-0">
+            <img src="../static/images/bg1.jpg" class="img-fluid">
+        </div>
+        <div class="col-sm-9">
+            <div class="trip_location">
+                <span class="tl">${e[i].from}</span>
+                <span class="trip_color"> > </span>
+                <span class="tl">${e[i].to}</span>
+                <span class="trip_color"> ! </span>
+            </div>
+            <div class="trip_date">${e[i].startDate}</div>
+            <div class="trip_type"><span class="trip_color">Trip Name</span> 
+                <span>${e[i].tripName}</span>
+            </div>
+            <div class="trip_type"><span class="trip_color">Creator's Email</span> 
+                <span>${e[i].email}</span>
+            </div>
+        </div>
+    </div>`
+        }
+    }
+})
+

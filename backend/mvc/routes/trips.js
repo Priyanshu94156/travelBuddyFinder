@@ -13,5 +13,7 @@ routes.post('/getOne',tripSave.getSpecificTrip)
 routes.post('/tripRequest',tripSave.travellingRequest)
 routes.post('/getRequestToOwner', tripSave.getRequestToOwner)
 routes.post('/acceptOrReject',tripSave.acceptOrReject)
+routes.post('/getUpcomingTrip', tripSave.getUpcomingTrip)
+routes.post('/getTripsForProfile', tripSave.getTripsForProfile)
 
 module.exports = routes

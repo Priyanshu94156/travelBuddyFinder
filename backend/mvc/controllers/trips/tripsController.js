@@ -1,4 +1,5 @@
 const express = require('express');
+const { object } = require('webidl-conversions');
 const tripCtrl = require("../../models/trips")
 const user = require('../../models/userModel').userModel;
 
@@ -124,4 +125,94 @@ async function getSpecificTrip(req,res){
     }
 }
 
-module.exports = {addTrips,getAllTrips,getSpecificTrip}
+async function travellingRequest(req,res){
+    try{
+        console.log(req.body)
+        //tripName , Owner , email ,message ,if requested then activate this push into requested requests,
+        //in users add the trip to  requested trips  
+        //if accepts the write another function to push into members list we need to show the user whether it is accepted or rejected 
+        // or we need to store the trip id or name with the status 
+        let messages_info={
+            message:req.body.message,
+            email:req.body.email
+        }
+        console.log(messages_info)
+        let request = await tripCtrl.tripModel.findOneAndUpdate({owner:req.body.owner,tripName:req.body.tripName},{$push:{messages_info:messages_info,requestedMembers:req.body.email}})
+        if (!request){
+            console.log("no trip")
+            res.send("no trip available")
+        }
+        else{
+            console.log("updated")
+            res.send("updated trip")
+        }
+    }
+    catch(e){
+        res.send(e)
+    }
+}
+
+
+async function getRequestToOwner(req,res){
+    try{
+        console.log(req.body)
+        email = req.body.email
+        let request = await tripCtrl.tripModel.find({owner:email})
+        if(!request){
+            res.send("Not Found")
+        }
+        else{
+            res.send(request)
+        }
+    }
+    catch(e){
+        res.send(e)
+    }
+
+}
+
+
+async function acceptOrReject(req,res){
+    try{
+        console.log(req.body)
+        // task , object, email
+        if (req.body.task=="Approve"){
+            let tasked = await tripCtrl.tripModel.findOneAndUpdate({_id:req.body._id},{$pull:{requestedMembers:req.body.email},$push:{members:req.body.email}})
+            if (!tasked){
+                res.send("Approve not Found")
+            }else{
+                res.send(tasked)
+            }
+            let userUpdate = await user.findOneAndUpdate({email:req.body.email},{$push:{trips:req.body._id}})
+            if(!userUpdate){
+                console.log("err")
+            }
+            else{
+                console.log("Approve success")
+            }
+        }
+        else if (req.body.task=="Decline"){
+            let rejectedTasked = await tripCtrl.tripModel.findOneAndUpdate({_id:req.body._id},{$pull:{requestedMembers:req.body.email},$push:{blackList:req.body.email}})
+            if (!rejectedTasked){
+                res.send("Decline not Found")
+            }else{
+                res.send(rejectedTasked)
+            }
+            let userUpdate = await user.findOneAndUpdate({email:req.body.email},{$push:{blackedTrips:req.body._id}})
+            if(!userUpdate){
+                console.log("Decline err")
+            }
+            else{
+                console.log("Decline success")
+            }
+        }
+
+    }
+    catch(e){
+        res.send(e)
+
+    }
+
+}
+
+module.exports = {addTrips,getAllTrips,getSpecificTrip ,travellingRequest, getRequestToOwner ,acceptOrReject}

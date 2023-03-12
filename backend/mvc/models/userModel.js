@@ -59,6 +59,7 @@ const userSchema= mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: 'tripDetails'
         }],
+    blackedTrips:[],
     visitedUsers:[],
     reviews:[]
 })

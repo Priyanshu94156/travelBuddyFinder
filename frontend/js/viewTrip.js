@@ -95,3 +95,55 @@ var endDate = $("#endDate");
         }
     })
 }
+
+
+const sendRequestBtn = document.querySelector('#send-request-btn');
+
+sendRequestBtn.addEventListener('click', () => {
+  const alertBox = document.createElement('div');
+  alertBox.classList.add('alert-box');
+  alertBox.innerHTML = `
+    <h2>Send Request</h2>
+    <label for="message">Message:</label>
+    <input type="text" id="message" name="message" required>
+    <button id="send-btn">Send</button>
+  `;
+  document.body.appendChild(alertBox);
+  
+  const sendBtn = alertBox.querySelector('#send-btn');
+  const messageInput = alertBox.querySelector('#message');
+  
+  sendBtn.addEventListener('click', () => {
+    let message = messageInput.value;
+    // Send request logic here
+
+let data=window.location.hash.split('#')[1]
+let postOwner=data.split('/')[0]
+let tripNam = (data.split('/')[1]).replace("%20", " ");
+
+    data={
+        owner:postOwner,
+        tripName:tripNam,
+        message:message,
+        email:localStorage.getItem('email')
+    }
+    data=JSON.stringify(data)
+    console.log(data)
+    $.ajax({
+        method:"POST",
+        contentType:"application/json",
+        data:data,
+        url:url+"/trip/tripRequest",
+        success:(e) =>{
+            console.log(e)
+            alert(e+'Request sent: ' + message);
+        },
+        error:(e) =>{
+            console.log(e)
+            alert(e+"error")
+        }
+    })
+    
+    alertBox.remove();
+  });
+});

@@ -6,6 +6,14 @@ const msgArea = document.querySelector('#messageArea')
 let owner=window.location.hash.split('#')[1]
 console.log("THIS",owner)
 
+
+var obj = {
+    name:localStorage.getItem('email'),
+    email:localStorage.getItem('email'),
+    time:"10.45am",
+    roomname:localStorage.getItem('email')+'$'+owner
+}
+
 window.onload =() =>{
 
 $.ajaxSetup({
@@ -18,12 +26,7 @@ let data={
 }
 
 
-var obj = {
-    name:localStorage.getItem('email'),
-    email:localStorage.getItem('email'),
-    time:"10.45am",
-    roomname:localStorage.getItem('email')+'$'+owner
-}
+
     $.ajax({
         method:"POST",
         contentType:"application/json",

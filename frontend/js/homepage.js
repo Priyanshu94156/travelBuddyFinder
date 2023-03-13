@@ -68,8 +68,10 @@ signinbtn.addEventListener('click', function() {
 			data = JSON.parse(data) 
 			localStorage.setItem("token",data.token);
 			//console.log("data",data.status);
-			
-			if(data.status =="valid"){
+			if(data.status == "admin"){
+				window.location.href="admin.html"
+			}
+			else if(data.status =="valid"){
 				console.log("data",data);
 				// console.log(username)
 				window.localStorage.setItem("email",data.email)

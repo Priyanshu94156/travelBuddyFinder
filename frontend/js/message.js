@@ -21,7 +21,7 @@ let data={
         method:"POST",
         contentType:"application/json",
         data:JSON.stringify(data),
-        url:url+"/user/getVisitors",
+        url:urls+"/user/getVisitors",
         success:(e)=>{
             console.log(e)
             ShowUsers(e)

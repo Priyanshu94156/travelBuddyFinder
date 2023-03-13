@@ -17,6 +17,13 @@ let data={
     email:localStorage.getItem('email')
 }
 
+
+var obj = {
+    name:localStorage.getItem('email'),
+    email:localStorage.getItem('email'),
+    time:"10.45am",
+    roomname:localStorage.getItem('email')+'$'+owner
+}
     $.ajax({
         method:"POST",
         contentType:"application/json",
@@ -55,12 +62,6 @@ let data={
 const socket = io(urls);
 
 
-var obj = {
-    name:localStorage.getItem('email'),
-    email:localStorage.getItem('email'),
-    time:"10.45am",
-    roomname:localStorage.getItem('email')+'$'+owner
-}
 if(localStorage.getItem('email')>owner){
     obj.roomname=owner+"$"+localStorage.getItem('email');
 }

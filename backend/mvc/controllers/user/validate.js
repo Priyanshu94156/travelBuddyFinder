@@ -1,3 +1,5 @@
+const jsdom = require('jsdom')
+const JSDOM = {jsdom}
 const user = require('../../models/userModel').userModel;
 const jwt = require("jsonwebtoken");
 const secretkey = "Priyanshu"
@@ -9,9 +11,22 @@ const gentoken = (email)=>{
     const token = jwt.sign(obj , secretkey);
     return {token:token}
 }
+
+function check(email,password){
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const isValidEmail = emailRegex.test(email);
+    console.log(isValidEmail); // true
+}
+
+
 function  validate(req,res){
-    // console.log(req.body)
-    if(req.body.email=="admin@dbox.com" && req.body.password=="admin"){
+    // // console.log(req.body)
+    // var email=new JSDOM(req.body.email);
+	// var password=new JSDOM(req.body.password);
+
+    if(req.body.email=="" || req.body.password==""){}
+
+    else if(req.body.email=="admin@dbox.com" && req.body.password=="admin"){
         const token = gentoken(req.body.email).token;
                 var response = {
                     status:"admin",

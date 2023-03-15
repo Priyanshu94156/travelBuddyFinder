@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "travel-buddy-finder-999",
+  "private_key_id": "54e5ccdea21273bc79b0628f6a5c17388817dc91",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCZr8+3qhfAfV66\n66v60GNoQcnXIenbLMSJSgiYlFhk2QIG0F0nJWT+LX5rQTibzHnuJP9SeNoUWBC7\nWAnhnuu4eQdfSCftzyxgW03aYbAYlk7Zcb60FFEvsEnTl33CeqJt9l9QYsv+c+oz\nDmzxy+PGWJ7ImFGpjnb0eAyvg78XIBIKGJNRP5bZRqWZGG+2UJfnzgJjRknzaXFV\nw9NoPgbSMqURHexBemPR1DJh0aG1Pzc17QNH+s1y8SjWGO7uCXESc2kdM/RZB5t9\nBTHc4gGl1EOZEbh0VMbxJcMrwPiLgsQ9+ZqAQN94CVZXh7P+gNw21UbyItCw9b3F\nKuNclwrNAgMBAAECggEACeLXFg21Pu7hod0IoFb42gtHWFUoZa6sytcOFACQ6hXS\njU0ofNzpMPeMtwoIQe9mlYTgPrYi8yWSF/cLFa4jJCf26zBpTyEhTeZ5rNdVXFOI\n6XBpb8yRx2NL8HZBgvngCnpLedCNJkZfFZ8zL1+p/IeVWTqBIErXiJTTXhP3vh06\nvlUCkLBnEnYZOZlXXK6HUQdXZeureldFohYQPmpt6PkGP7tPo1SNc9ZpoQtC3Fvm\nbgYied9EH5DxTAJIUqsIsEgo6Ru76z/gG3WVXBVFI8wGZI4KpON159i0MUeA758F\nVOTG7y2p7PKPk0Ocg+2bWu+AZjFnH0bRsBLwsy3cYQKBgQDJLKGQB7TCW5u1t/I2\nB51VgRJ8PlPdYUVgcpHtJ37INDyOtgfz+GAkHVDMUADS9whgn2+WJDk8xR0y+EB6\nBs/CiD5T9DigSApP3OyTe15npiEu6ow3Xq2Bp4N+wnl19kSuxwpyMxcUJEzVT0M9\nivf/BUA1gxaW2XTfuW5UX8VQ4QKBgQDDkhr5xZMK2QSCgJu2+J+8i6S90/8yl+UB\nRlDk/oBIoJtWBnZc7ZgVYv+ktbAVMQdZZLT9SNBWMjgLAHBHTU/qbPKAZhPA00KX\nSH1AHGbKEtFbDof7W6HZKfWUQAFIvDMzqkUzFS8xQwmy6b3wyz51iLsbYXzhpL27\nFxGxbSf7bQKBgFs+qAToyd7BqC1SwkQpTf5DLbw2lNk7TjlBndhf6owpzTG5dH/+\nrrSSq1wQCV+mdiFFD1qdEWzzxpugp7XxMvh7zTFM+wYPxsWUYaU+9oGygyiBb5mJ\nks7UyLqMwIR1b4+Kbb2AWL5k/IhfjBL03ijIG+hpjaxb8zuqIlWYnqlhAoGAKkUp\nCXVXu89+Nwq/HUQNmn4ARHtOvEuyVp0xHN2ZMplsGaLZ8Gn2JiE4qgwPG/V15i9r\nIxea2BaQoGge3HpsXHnhzDjD6jh/Ox2S3MmGugRpNaolYAHFMJ/uEXXoESWEV5Vk\n0Y6xnY8kyIPW5vW28UZ1Uoy2pjqqO4bX7yZtrt0CgYBaQwOOx2W4Jkm3xbS9CmEZ\nnNP3LRZjKoGHah9/JcaWved+Jpkjl5Vp1I7dfa44szFZ1GsT/blO6nnUr2e4Qvpd\nm45tH3lviTAGqbyyRXb2XjhrfIq+hhi9e6A4Mb/Q8lKVpQlasQb11tiTTfVMTPXP\n0rvFnhBO4zsWOMw9GYAMIA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "travel-buddy-finder@travel-buddy-finder-999.iam.gserviceaccount.com",
+  "client_id": "111642068569190071514",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/travel-buddy-finder%40travel-buddy-finder-999.iam.gserviceaccount.com"
+}

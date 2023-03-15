@@ -33,7 +33,7 @@ let data={
         data:JSON.stringify(data),
         url:urls+"/user/getVisitors",
         success:(e)=>{
-            console.log(e)
+            console.log("users",e)
             ShowUsers(e)
         }
     })
@@ -134,13 +134,25 @@ function ShowUsers(data){
 
 
 function showHead(data){
-    document.querySelector('#head').innerHTML=`<div class="col-sm-8 rightContentArea date">
-    <header>
-        <div class="trip_location text-ellipsis">
-            <span class="tl">${data.persons}</span>
-            <span class="tl"></span>
-            <span class="trip_color"></span>
-        </div>`
+    let user = (data.persons).split('$')
+    console.log(user)
+    let head = ""
+    for (let i=0;i<user.length;i++){
+        if(user[i]!=localStorage.getItem('email')){
+            head=user[i]
+        }
+    }
+
+    console.log("Heading",head)
+    document.querySelector('#head').innerHTML=`<div class="date mesListCard read selected " >
+    <div class="trip_location text-ellipsis">
+        <span class="p-3 mb-2 bg-info text-white">${head}</span>
+        <span class="trip"> </span>
+        <span class="tl"></span>
+        <span class="trip_color"></span>
+    </div>
+
+</div>`
 }
 
 

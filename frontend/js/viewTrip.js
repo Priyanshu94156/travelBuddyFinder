@@ -70,6 +70,7 @@ var to = $("#to");
 var cost = $("#cost");
 var startDate = $("#startDate");
 var endDate = $("#endDate");
+var photos = $("#photos");
     data={
         owner:postOwner,
         tripName:tripNam
@@ -92,6 +93,10 @@ var endDate = $("#endDate");
         cost.html(e.travellingCost)
         startDate.html((e.startDate).slice(0,10))
         endDate.html((e.endDate).slice(0,10))
+        for(let i=0;i<photos.length;i++){
+            photos.append(`<img src="${e.photos[i]}" alt="" class="img-fluid"srcset=""><br>`)
+            photos.append(`<br>`)
+        }
         },error:(e)=>{
             alert(e)
         }

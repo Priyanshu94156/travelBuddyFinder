@@ -207,29 +207,25 @@
 				<div class="row justify-center">
 					<form>
 						<fieldset>
-							<input type="text" placeholder="Name" id="name">
-							<input type="email" placeholder="Email" id="email">
-							<input type="password" placeholder="Password" id="password">
-							<input type="password" placeholder="Confirm Password" id="confirm_password">
+							<input type="text" placeholder="Name" id="name" required="True">
+							<input type="email" placeholder="Email" id="email" required="True">
+							<input type="password" placeholder="Password" id="password" required="True">
+							<input type="password" placeholder="Confirm Password" id="confirm_password" required="True">
 							<div class="row ">
 								<div class="column">
-									<select id="gender" >
+									<select id="gender">
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
-										<option value="third">Prefer not to say</option>
+										
 									</select>
 								</div>
 								<div class="column">
-									<input type="text" placeholder="Age" id="age" >
-								</div>
-								<div class="column">
-									<label for="fromDate" class="col-form-label customLabel">Date of Birth</label>
-									<input class="customInp form-control" type="date" value="yyyy-MM-dd" id="startDate">
+									<input type="number" placeholder="Age" id="age" required>
 								</div>
 								
 							</div>
 							
-							<input type="text" placeholder="Phone Number" id="phno">
+							<input type="number" placeholder="Phone Number" id="phno">
 							<!-- <input type="text" placeholder="Referral Code" id="referral2"> -->
 
 							<!-- <div class="register_chck">

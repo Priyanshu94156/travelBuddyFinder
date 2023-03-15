@@ -3,6 +3,8 @@
 import getUrl from './url.js'
 const urls = getUrl()
 console.log(urls)
+
+
 let dates = new Date()
 let month = (dates.getMonth()+1).toString()
 let year = (dates.getFullYear()).toString()
@@ -39,6 +41,8 @@ document.getElementById('startDate').min = mindate
 document.getElementById('startDate').max = maxdate
 document.getElementById('endDate').max = maxdate
 document.getElementById('endDate').min = mindate
+
+
 $('#createTrip').click(()=> {
     let pics=document.getElementById('File')
     let owner=window.localStorage.getItem('email'),
@@ -68,25 +72,7 @@ $('#createTrip').click(()=> {
             xhr.setRequestHeader('token', localStorage.getItem('token'));
         }
     });
-    // for(let i=0; i<pics.files.length; i++){
-    //     console.log(pics.files[i])
-    //     photos.push(pics.files[i])
-    // }
-    // console.log(photos)
-    // let tripData = new FormData();
-    // tripData.append("owner",owner);
-    // tripData.append("description",description);
-    // tripData.append("from",from);
-    // tripData.append("to",to);
-    // tripData.append("startDate",startDate);
-    // tripData.append("endData",endDate);
-    // tripData.append("flexible",flexible);
-    // tripData.append("preferences",preferences);
-    // tripData.append("keywords",keywords);
-    // tripData.append("travellingCost",travellingCost);
-    // tripData.append("photos",pics.files);
-    
-    
+
 
 
     let formdata = new FormData(document.querySelector("#myform"));
@@ -104,7 +90,10 @@ $('#createTrip').click(()=> {
     // formdata.set("photos",pics.files);
 
     // console.log("formdata: ",formdata);
-    if(date1 < new Date()){ alert("Pick a valid start date")}
+    if((owner=="") && (tripName=="") && (description=="") && (from=="") && (to=="") && (startDate=="") && (endDate=="") && (flexible=="") && (preferences=="") && (travellingCost=="")){
+        alert("Null Fields Not Allowed")
+    }
+    else if(date1 < new Date()){ alert("Pick a valid start date")}
     else if(date2 > ((new Date()).addDays(365))) {alert("Max limit to set trip is 1 year")}
     else if(date1 > date2) {alert("start Date should be smaller than end date")}
     else if(diffDays > 30) {alert("long trips not allowed")}
@@ -134,7 +123,7 @@ $('#createTrip').click(()=> {
 
 
 $('#createStory').click(()=> {
-    owner=window.localStorage.getItem('email'),
+    let owner=window.localStorage.getItem('email'),
     photos=[]
     console.log("simple")
     $.ajaxSetup({

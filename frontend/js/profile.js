@@ -52,18 +52,28 @@ $("#edit").click(()=>{
 })
 
 var flag_es=0;
+var flag_=0;
 //progress bar
 function barDisplay(){
     var flag_p=0;
     var pbar=document.getElementById("bar")
     document.getElementById('user_name').innerHTML.length>0?flag_p+=1:''
+    console.log("uName",document.getElementById('user_name').innerHTML)
     document.getElementById('email').innerHTML.length>0?flag_p+=1:''
+    console.log("Email",document.getElementById('email').innerHTML)
     document.getElementById('city').innerHTML.length>0?flag_p+=1:''
+    console.log(document.getElementById('city').innerHTML)
     document.getElementById('height').innerHTML.length>0?flag_p+=1:''
+    console.log(document.getElementById('height').innerHTML)
     document.getElementById('nationality').innerHTML.length>0?flag_p+=1:''
+    console.log(document.getElementById('nationality').innerHTML)
     document.getElementById('gender').innerHTML.length>0?flag_p+=1:''
+    console.log(document.getElementById('gender').innerHTML)
     document.getElementById('smoking').innerHTML.length>0?flag_p+=1:''
+    console.log(document.getElementById('smoking').innerHTML)
     document.getElementById('drinking').innerHTML.length>0?flag_p+=1:''
+    console.log(document.getElementById('drinking').innerHTML)
+    console.log(flag_p)
     pbar.style.width=(12.5*flag_p)+"%";
     document.getElementById("progresspercentage").innerHTML=(12.5*flag_p)+"%";
     console.log(flag_p);

@@ -47,14 +47,22 @@ $(document).on('click', '.menu-link', function(){
 
 
 //sign in button
+// const jsdom = require('jsdom')
+// const JSDOM = {jsdom}
+
 var signinbtn = document.getElementById('signinbtn');
 signinbtn.addEventListener('click', function() {
 	var mail=document.querySelector("#LogEmail");
 	var pwd= document.getElementById("LogPassword");
 	console.log(mail.value+" "+pwd.value);;
 	var url=urls+"/user/validate";
+	// var email=new JSDOM(mail.value);
+	// var password=new JSDOM(pwd.value);
 	var email=mail.value;
 	var password=pwd.value;
+	if(email=="" && password == ""){
+		alert("Empty fields not allowed")
+	}else{
 	var data={email:email,password:password}
 	var dataUser=JSON.stringify(data);
 	console.log(dataUser);
@@ -89,12 +97,13 @@ signinbtn.addEventListener('click', function() {
         console.log("error with the server");
 		alert("not added ")
     }})
-
+}
 });
 
 
 //signup button
 signupBtn.addEventListener('click',()=>{
+	
     var input_email=$('#email')[0]
 	var in_name=$("#name")[0]
     var pwd=$('#password')[0]
@@ -102,9 +111,16 @@ signupBtn.addEventListener('click',()=>{
 	var in_gender=$('#gender')[0]
 	var in_age=$('#age')[0]
 	var in_phno=$('#phno')[0]
-    if(pwd.value != pwd_conf.value){
+	console.log(input_email.value)
+	if(input_email.value=="" && in_name.value=="" && pwd.value=="" && pwd_conf.value=="" && in_age.value=="" && in_phno.value==""){
+		alert("Empty fields Not Allowed")
+	}
+    else if(pwd.value != pwd_conf.value){
         alert("password doesn't match!!")
-    }else{
+    }else if(in_phno.value.length<10 || in_phno.value.length>13){
+		alert("phone number invalid")
+	}
+	else{
         var url=urls+"/user/addUser";
         var data={email:input_email.value,password:pwd.value,name:in_name.value,gender:in_gender.value,age:in_age.value,phno:in_phno.value};
         var data = JSON.stringify(data);
@@ -124,11 +140,16 @@ signupBtn.addEventListener('click',()=>{
                     if(data.status=="valid"){
                         localStorage.setItem("email",email);
                         // localStorage.setItem("name",username);
-                        window.location.replace("profile.html")
-                        alert("user registered successfully")
+                        alert("user registered successfully please login to continue")
+                        
                     }else if(data.status=="exist"){
                         alert("user already exist")                      
-                    }else{
+                    }
+					else if(data.status =="invalid signUp"){
+						alert("Not a Strong Password")
+						 e.preventDefault();	
+					}
+					else{
                         alert("unable to register user")
                     }
                     

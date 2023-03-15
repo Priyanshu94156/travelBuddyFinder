@@ -2,7 +2,22 @@ const { array } = require('../../middleware/upload');
 
 const user = require('../../models/userModel').userModel;
 
+function check(email,password){
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const isValidEmail = emailRegex.test(email);
+    console.log(isValidEmail); // true
+
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])(?=.*[^\s]).{8,}$/;
+const isValidPassword = passwordRegex.test(password);
+console.log(isValidPassword); // true
+return (isValidEmail && isValidPassword)
+}
+
+
+
 function addUser(req,res){
+    console.log("Hello",req.body.email,req.body.password)
+    if(check(req.body.email,req.body.password)){
     var newUser = new user({
         name: req.body.name,
         email: req.body.email,
@@ -12,6 +27,7 @@ function addUser(req,res){
         gender: req.body.gender,
         currentSubscription:0
     })
+
     user.find({email:req.body.email},(err,data)=>{
         if(err){
             res.send('error') 
@@ -32,6 +48,12 @@ function addUser(req,res){
             }
         }
     })
+}
+else{
+    var response = {status:"invalid signUp"};
+    res.send(JSON.stringify(response))
+
+}
 }
 
 function subscribeValidation(req,res){
@@ -87,11 +109,13 @@ async function reqPush(req,res){
         console.log(req.body)
     let userData = await user.findOne({email:req.body.email})
     if(!userData){
+        console.log('first',userData)
         res.send("not Found")
     }else{
+        console.log('second',userData)
         if(userData.visitedUsers.length==0 || userData.visitedUsers.length==null){
             let visitedUsersData = await user.updateOne({email:req.body.email},{$push:{visitedUsers:req.body.reqEmail}})
-            
+            console.log("check")
         }else{
             flag=0
             for(i=0;i<userData.visitedUsers.length;i++){
@@ -108,11 +132,14 @@ async function reqPush(req,res){
     }
     let reqEmailData = await user.findOne({email:req.body.reqEmail})
     if(!reqEmailData){
+        console.log('third',reqEmailData)
         res.send("not found")
     }
     else{
+        console.log('fourth',reqEmailData)
         if(reqEmailData.visitedUsers.length==0 || reqEmailData.visitedUsers.length==null){
             let update = await user.updateOne({email:req.body.reqEmail},{$push:{visitedUsers:req.body.email}})
+            console.log("check")
         }
         else{
             flag=0
@@ -124,7 +151,8 @@ async function reqPush(req,res){
                 }
             }
             if(flag==0){
-                user.updateOne({email:req.body.reqEmail},{$push:{visitedUsers:req.body.email}})
+                let up = await user.updateOne({email:req.body.reqEmail},{$push:{visitedUsers:req.body.email}})
+                console.log('up',up)
             }
 
         }

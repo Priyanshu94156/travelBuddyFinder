@@ -11,8 +11,8 @@ getTrips()
 
 function getTrips(){
     $.get(urls+"/trip/getAllTrips",function(data,status){
-        console.log("this",data[9].photos[0])
-        console.log(data[0].tripName)
+        // console.log("this",data[9].photos[0])
+        // console.log(data[0].tripName)
         for(var i=0;i<data.length;i++){
             console.log('abc',data[i].owner)
             $("#displayTrips").append(`<div class="trip_card date row">
